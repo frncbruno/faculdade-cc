@@ -8,4 +8,5 @@ Discussão sobre critério de notas a partir desse novo semestre.
 - SELECT
 - BUBBLE
 - INSERT
+- Agitação, Shell, Pente (COMB_SORT), Radix, Bucket
 - Complexidade: esforço computacional, se o algoritmo faz muito esforço é ruim
