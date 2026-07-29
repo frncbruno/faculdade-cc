@@ -4,14 +4,14 @@ package com.mycompany.projetoconta;
  *
  * @author laboratorio
  */
-public class Main {
-    public static void main(String[] args) {
-        Casa casa = new Casa();
+public class Casa {
+    // Método que calcula o preço apenas pelo tamanho
+    public double calcularPreco(int tamanho) {
+        return tamanho * 2000; // R$ 2.000 por metro quadrado
+    }
 
-        System.out.println("Preço da casa (apenas tamanho): R$ " +
-                casa.calcularPreco(100));
-
-        System.out.println("Preço da casa (tamanho + quartos): R$ " +
-                casa.calcularPreco(100, 3));
+    // Método sobrecarregado que calcula o preço pelo tamanho e número de quartos
+    public double calcularPreco(int tamanho, int quartos) {
+        return (tamanho * 2000) + (quartos * 15000);
     }
 }
