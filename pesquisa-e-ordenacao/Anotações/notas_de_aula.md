@@ -1,7 +1,5 @@
 # Aula 02 - 30/07/2026
 
-Realização do desafio.
-
 ## Conceitos
 
 - *CRUD: Create, Retrieve, Update, Delete*
