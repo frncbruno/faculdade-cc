@@ -63,3 +63,15 @@ CREATE TABLE Funcionario (
     Complemento VARCHAR(255)
 );
 ```
+
+---
+
+<img width="1011" height="228" alt="image" src="https://github.com/user-attachments/assets/fea385fa-3a62-40c9-8506-62a523a0151c" />
+
+<img width="625" height="294" alt="image" src="https://github.com/user-attachments/assets/1a46763f-bf3e-40b0-a4fa-80c860ba665e" />
+
+---
+
+<img width="1241" height="485" alt="image" src="https://github.com/user-attachments/assets/4cddf483-75b7-471c-8113-5f7b5fb00cdb" />
+
+<img width="728" height="517" alt="image" src="https://github.com/user-attachments/assets/76e7b77a-a5f0-4ce9-8c7e-88f1d4edb7e4" />
