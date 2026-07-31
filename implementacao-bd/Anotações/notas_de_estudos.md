@@ -17,3 +17,47 @@ O *reverse engineering* é o caminho inverso: analisa-se um produto, sistema ou 
 - **Objetivo:** Entender o funcionamento, realizar manutenções, garantir interoperabilidade, encontrar falhas de segurança ou replicar tecnologias.
 - **Exemplo:** Analisar um arquivo executável compilado (binário) para entender como ele valida uma licença ou como funciona um protocolo proprietário.
 
+---
+
+---
+
+## 🗄️ SGBD (Sistema de Gerenciamento de Banco de Dados)
+Software que serve de interface entre o banco de dados, os usuários e as aplicações, garantindo a organização, a segurança e a integridade dos dados.
+* **Foco (Evitar Duplicidade):** Uma das suas principais funções, através da **normalização**, é evitar a redundância (duplicidade) de informações, garantindo que os dados sejam armazenados de forma centralizada e consistente.
+* **Exemplos:** PostgreSQL, MySQL, SQL Server, Oracle.
+
+---
+
+## 📐 Modelo Entidade-Relacionamento Conceitual (MER Conceitual)
+É a representação abstrata e dealto nível da estrutura de um banco de dados, focando apenas nos aspectos de negócio (o "o quê" será armazenado, e não o "como").
+* **O que contém:** Entidades (tabelas/objetos), Atributos (características) e Relacionamentos (como as entidades se conectam, ex: *1 para N*, *N para N*).
+* **Independência:** É totalmente independente de tecnologia, SGBD ou linguagem de programação específica.
+
+---
+
+## 🔑 Chave Primária (Primary Key)
+Atributo ou conjunto de atributos que identifica de forma **única** cada registro (linha) dentro de uma tabela.
+* **Regras:** Não pode ser nula (`NOT NULL`) e não pode se repetir (`UNIQUE`).
+* **Exemplos:** O CPF de uma pessoa, o ID de um usuário ou o código de barras de um produto.
+
+---
+
+## 🗂️ Atributo Multivalorado
+Um atributo que pode armazenar **mais de um valor** para uma mesma entidade.
+* **Exemplos:** O atributo `Telefone` de uma pessoa (um cliente pode ter zero, um ou vários telefones) ou `IdiomasFalados` de um funcionário.
+* **No modelo relacional tradicional:** Geralmente não é permitido diretamente nas tabelas (gerando a necessidade de criar uma nova tabela para representar esses múltiplos valores).
+
+---
+
+`/* Lógico_1: */
+
+CREATE TABLE Funcionario (
+    CPF CHAR(14) PRIMARY KEY,
+    Nome VARCHAR(100),
+    DataNascimento DATE,
+    Salario DECIMAL(10,2),
+    CEP CHAR(9),
+    Rua VARCHAR(100),
+    Numero INT,
+    Complemento VARCHAR(255)
+);`
