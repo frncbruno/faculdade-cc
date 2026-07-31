@@ -27,7 +27,7 @@ Software que serve de interface entre o banco de dados, os usuários e as aplica
 ---
 
 📐 Modelo Entidade-Relacionamento Conceitual (MER Conceitual)
-É a representação abstrata e dealto nível da estrutura de um banco de dados, focando apenas nos aspectos de negócio (o "o quê" será armazenado, e não o "como").
+É a representação abstrata e de alto nível da estrutura de um banco de dados, focando apenas nos aspectos de negócio (o "o quê" será armazenado, e não o "como").
 * **O que contém:** Entidades (tabelas/objetos), Atributos (características) e Relacionamentos (como as entidades se conectam, ex: *1 para N*, *N para N*).
 * **Independência:** É totalmente independente de tecnologia, SGBD ou linguagem de programação específica.
 
