@@ -47,6 +47,8 @@ Um atributo que pode armazenar **mais de um valor** para uma mesma entidade.
 
 ---
 
+<img width="701" height="229" alt="image" src="https://github.com/user-attachments/assets/51d8e1ed-78b7-4232-be65-6036b103467c" />
+
 ```sql
 /* Lógico_1: */
 
