@@ -2,8 +2,63 @@
 
 ## Conceitos
 
-- Padrão arquitetural (MVC)
-- Model View Controller: 
+O **MVC** (Model-View-Controller, ou Modelo-Visão-Controle) é um dos padrões de arquitetura de software mais conhecidos e utilizados no desenvolvimento de sistemas. Seu objetivo principal é a **separação de responsabilidades**, dividindo a aplicação em três camadas interconectadas para facilitar a manutenção, escalabilidade e reutilização de código.
+
+---
+
+## 1. As Três Camadas do MVC
+
+### Model (Modelo)
+* **O que é:** É o coração da aplicação. Representa a camada de dados, a lógica de negócios e as regras que governam como os dados são criados, armazenados e modificados.
+* **Responsabilidades:**
+  * Comunicação direta com o banco de dados (gerenciamento de persistência).
+  * Validação de regras de negócio.
+  * Notificação da camada de controle ou visão sobre alterações em seu estado (quando aplicável).
+
+### View (Visão)
+* **O que é:** É a interface de usuário (UI) da aplicação. É tudo o que o usuário enxerga e com o que interage diretamente (telas, formulários, botões, relatórios, etc.).
+* **Responsabilidades:**
+  * Exibir os dados fornecidos pelo Model de forma clara e amigável.
+  * Capturar as ações e entradas do usuário (cliques, digitação) e enviá-las para o Controller.
+  * **Regra de ouro:** A View não deve conter lógicas de negócios complexas ou acessos diretos ao banco de dados.
+
+### Controller (Controlador)
+* **O que é:** É o intermediário (o "cérebro" de coordenação) entre a View e o Model.
+* **Responsabilidades:**
+  * Receber as requisições e entradas do usuário vindas da View.
+  * Processar essas entradas (muitas vezes acionando o Model para buscar ou salvar dados).
+  * Selecionar a resposta adequada e decidir qual View deve ser renderizada e enviada de volta ao usuário.
+
+---
+
+## 2. Como Funciona o Fluxo de Dados
+
+O ciclo de vida típico de uma requisição em uma arquitetura MVC segue esta sequência:
+
+1. **Ação do Usuário:** O usuário interage com a interface (ex: clica em um botão de login ou preenche um formulário na **View**).
+2. **Envio para o Controller:** A **View** envia essa requisição (dados de entrada) para o **Controller**.
+3. **Processamento no Model:** O **Controller** recebe a requisição, interpreta-a e aciona o **Model** para processar os dados ou buscar informações no banco de dados.
+4. **Retorno dos Dados:** O **Model** executa a lógica de negócio, interage com o banco de dados e retorna o resultado para o **Controller**.
+5. **Atualização da View:** O **Controller** recebe os dados processados do **Model** e os encaminha para a **View** correta, que atualiza a interface para exibir o resultado ao usuário.
+
+---
+
+## 3. Vantagens da Arquitetura MVC
+
+* **Separação de Interesses (Separation of Concerns):** Código limpo e modular. Alterações na interface (View) não afetam a lógica de negócios (Model).
+* **Desenvolvimento Simultâneo:** Diferentes membros da equipe podem trabalhar em partes distintas ao mesmo tempo (um focado no design/View, outro no banco/Model e outro nas regras/Controller).
+* **Facilidade de Manutenção e Testes:** Como as camadas são independentes, fica muito mais fácil testar a lógica de negócios de forma isolada e realizar manutenções corretivas ou evolutivas.
+* **Reutilização de Código:** Um único Model pode ser reutilizado por diferentes Views (ex: uma aplicação web e um aplicativo mobile consumindo a mesma API/Model).
+
+---
+
+## Resumo Comparativo dos Componentes
+
+| Componente | Responsabilidade Principal | Interage com |
+| :--- | :--- | :--- |
+| **Model (Modelo)** | Dados e Regras de Negócio | Banco de Dados e Controller |
+| **View (Visão)** | Interface de Usuário (Apresentação) | Usuário e Controller |
+| **Controller (Controlador)** | Intermediação e Fluxo da Aplicação | Model e View |
 
 ---
 
