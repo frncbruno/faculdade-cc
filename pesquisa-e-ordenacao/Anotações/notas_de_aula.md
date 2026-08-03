@@ -7,8 +7,6 @@
 
 ---
 
----
-
 ## 1. Métodos Básicos
 
 ### Pente (Comb Sort)
