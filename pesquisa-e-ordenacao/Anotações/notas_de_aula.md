@@ -9,6 +9,24 @@
 
 ## 1. Métodos Básicos
 
+### Bolha (Bubble Sort)
+* **Memória:** Interna
+* **Estabilidade:** Estável
+* **Complexidade:** $O(n)$ (melhor caso, com otimização) | $O(n^2)$ (caso médio e pior caso)
+* **Porção ordenada:** Final (os maiores elementos "borbulham" progressivamente para o final do vetor).
+
+### Seleção (Selection Sort)
+* **Memória:** Interna
+* **Estabilidade:** Instável (pode ser implementado de forma estável, mas a versão clássica é instável)
+* **Complexidade:** $O(n^2)$ (em todos os casos)
+* **Porção ordenada:** Início (o menor elemento é selecionado e colocado na posição correta à esquerda a cada iteração).
+
+### Inserção (Insertion Sort)
+* **Memória:** Interna
+* **Estabilidade:** Estável
+* **Complexidade:** $O(n)$ (melhor caso, vetor já ordenado) | $O(n^2)$ (caso médio e pior caso)
+* **Porção ordenada:** Início (os elementos são inseridos um a um em suas posições corretas dentro de um subvetor que cresce ordenado à esquerda).
+
 ### Pente (Comb Sort)
 * **Memória:** Interna
 * **Estabilidade:** Instável
@@ -67,18 +85,21 @@
 
 ---
 
-## Resumo Comparativo
+## Resumo Comparativo Geral
 
-| Algoritmo | Memória | Estabilidade | Complexidade (Médio/Melhor) | Complexidade (Pior Caso) | Porção Ordenada |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Comb Sort** | Interna | Instável | $O(n \log n)$ | $O(n^2)$ | Distribuída |
-| **Shake Sort** | Interna | Estável | $O(n^2)$ | $O(n^2)$ | Início e Final (Alternado) |
-| **Shellsort** | Interna | Instável | $O(n \log^2 n)$ | $O(n^2)$ ou $O(n^{1.5})$ | Intercalada por Gaps |
-| **Heapsort** | Interna | Instável | $O(n \log n)$ | $O(n \log n)$ | Final |
-| **Mergesort** | Interna/Externa | Estável | $O(n \log n)$ | $O(n \log n)$ | Subvetores Mesclados |
-| **Quicksort** | Interna | Instável | $O(n \log n)$ | $O(n^2)$ | Partições ao redor do Pivô |
-| **Bucketsort**| Interna | Estável | $O(n + k)$ | $O(n^2)$ | Baldes Concatenados |
-| **Radixsort** | Interna | Estável | $O(d \cdot (n + k))$ | $O(d \cdot (n + k))$ | Por Dígito/Posição |
+| Algoritmo | Memória | Estabilidade | Complexidade (Melhor) | Complexidade (Médio) | Complexidade (Pior) | Porção Ordenada |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Bubble Sort** | Interna | Estável | $O(n)$ | $O(n^2)$ | $O(n^2)$ | Final |
+| **Selection Sort**| Interna | Instável | $O(n^2)$ | $O(n^2)$ | $O(n^2)$ | Início |
+| **Insertion Sort**| Interna | Estável | $O(n)$ | $O(n^2)$ | $O(n^2)$ | Início |
+| **Comb Sort** | Interna | Instável | $O(n \log n)$ | $O(n \log n)$ | $O(n^2)$ | Distribuída |
+| **Shake Sort** | Interna | Estável | $O(n)$ | $O(n^2)$ | $O(n^2)$ | Início e Final (Alternado) |
+| **Shellsort** | Interna | Instável | $O(n \log n)$ | $O(n \log^2 n)$ | $O(n^2)$ ou $O(n^{1.5})$ | Intercalada por Gaps |
+| **Heapsort** | Interna | Instável | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | Final |
+| **Mergesort** | Interna/Externa | Estável | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | Subvetores Mesclados |
+| **Quicksort** | Interna | Instável | $O(n \log n)$ | $O(n \log n)$ | $O(n^2)$ | Partições ao redor do Pivô |
+| **Bucketsort**| Interna | Estável | $O(n + k)$ | $O(n + k)$ | $O(n^2)$ | Baldes Concatenados |
+| **Radixsort** | Interna | Estável | $O(d \cdot (n + k))$ | $O(d \cdot (n + k))$ | $O(d \cdot (n + k))$ | Por Dígito/Posição |
 
 # Aula 02 - 30/07/2026
 
