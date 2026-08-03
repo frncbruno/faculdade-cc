@@ -1,3 +1,87 @@
+# Aula 03 - 03/08/2026
+
+## Conceitos
+
+- Padrão arquitetural (MVC)
+- Model View Controller: 
+
+---
+
+---
+
+## 1. Métodos Básicos
+
+### Pente (Comb Sort)
+* **Memória:** Interna
+* **Estabilidade:** Instável
+* **Complexidade:** $O(n^2)$ (pior caso) | $O(n \log n)$ (caso médio com reduções de gap)
+* **Porção ordenada:** Distribuída / Parcialmente ordenada ao longo de todo o vetor até o ajuste final.
+
+### Agitação (Shake Sort ou Cocktail Sort)
+* **Memória:** Interna
+* **Estabilidade:** Estável
+* **Complexidade:** $O(n^2)$
+* **Porção ordenada:** Alternada entre o início e o final (bidirecional).
+
+---
+
+## 2. Métodos Intermediários e Avançados ($O(n \log n)$ por Comparação)
+
+### Shellsort
+* **Memória:** Interna
+* **Estabilidade:** Instável
+* **Complexidade:** Varia conforme a sequência de incrementos (geralmente entre $O(n \log^2 n)$ e $O(n^{1.5})$)
+* **Porção ordenada:** Subvetores intercalados em múltiplos gaps até a ordenação completa.
+
+### Heapsort
+* **Memória:** Interna
+* **Estabilidade:** Instável
+* **Complexidade:** $O(n \log n)$ (em todos os casos)
+* **Porção ordenada:** Final (os maiores elementos são extraídos da heap e posicionados ao final do vetor).
+
+### Mergesort
+* **Memória:** Interna (requer espaço auxiliar $O(n)$) ou Externa (muito utilizado em arquivos grandes)
+* **Estabilidade:** Estável
+* **Complexidade:** $O(n \log n)$ (em todos os casos)
+* **Porção ordenada:** Subvetores mesclados de forma recursiva até formar o vetor completo.
+
+### Quicksort
+* **Memória:** Interna
+* **Estabilidade:** Instável (pode ser implementado de forma estável, mas a versão padrão é instável)
+* **Complexidade:** $O(n \log n)$ (caso médio) | $O(n^2)$ (pior caso)
+* **Porção ordenada:** Particionamento em torno de um pivô (elementos menores à esquerda, maiores à direita, com convergência para as extremidades).
+
+---
+
+## 3. Métodos de Ordenação Linear (Não Comparativos)
+
+### Bucketsort (Ordenação por Baldes)
+* **Memória:** Interna (requer estruturas auxiliares para os baldes)
+* **Estabilidade:** Estável (dependendo do algoritmo utilizado para ordenar os baldes internos)
+* **Complexidade:** $O(n + k)$ (caso médio) | $O(n^2)$ (pior caso, se todos caírem no mesmo balde)
+* **Porção ordenada:** Distribuída por faixas de valores (baldes) que são posteriormente concatenadas.
+
+### Radixsort
+* **Memória:** Interna
+* **Estabilidade:** Estável
+* **Complexidade:** $O(d \cdot (n + k))$ (onde $d$ é o número de dígitos e $k$ é a base do sistema numérico)
+* **Porção ordenada:** Ordenado progressivamente por dígito ou posição significativa (geralmente do dígito menos significativo para o mais significativo - LSD).
+
+---
+
+## Resumo Comparativo
+
+| Algoritmo | Memória | Estabilidade | Complexidade (Médio/Melhor) | Complexidade (Pior Caso) | Porção Ordenada |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Comb Sort** | Interna | Instável | $O(n \log n)$ | $O(n^2)$ | Distribuída |
+| **Shake Sort** | Interna | Estável | $O(n^2)$ | $O(n^2)$ | Início e Final (Alternado) |
+| **Shellsort** | Interna | Instável | $O(n \log^2 n)$ | $O(n^2)$ ou $O(n^{1.5})$ | Intercalada por Gaps |
+| **Heapsort** | Interna | Instável | $O(n \log n)$ | $O(n \log n)$ | Final |
+| **Mergesort** | Interna/Externa | Estável | $O(n \log n)$ | $O(n \log n)$ | Subvetores Mesclados |
+| **Quicksort** | Interna | Instável | $O(n \log n)$ | $O(n^2)$ | Partições ao redor do Pivô |
+| **Bucketsort**| Interna | Estável | $O(n + k)$ | $O(n^2)$ | Baldes Concatenados |
+| **Radixsort** | Interna | Estável | $O(d \cdot (n + k))$ | $O(d \cdot (n + k))$ | Por Dígito/Posição |
+
 # Aula 02 - 30/07/2026
 
 ## Conceitos
