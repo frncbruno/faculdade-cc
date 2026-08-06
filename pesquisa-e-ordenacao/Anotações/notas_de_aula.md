@@ -2,6 +2,78 @@
 
 ## Conceitos
 
+# MVC (Model - View - Controller)
+
+## Model
+Responsável pelos **dados** e pela **lógica de negócio**.
+
+- Armazena informações.
+- Manipula os dados.
+- Não exibe nada na tela.
+
+**Exemplo:**
+- `ListaModel.java`
+- `Utilidades.java`
+
+---
+
+## View
+Responsável pela **interface com o usuário**.
+
+- Exibe informações.
+- Recebe entradas do usuário (quando houver).
+- Não contém regras de negócio.
+
+**Exemplo:**
+- `ListaView.java`
+
+---
+
+## Controller
+Responsável por **controlar o fluxo da aplicação**.
+
+- Recebe as ações do usuário.
+- Chama o Model para processar os dados.
+- Chama a View para exibir os resultados.
+
+**Exemplo:**
+- `ListaController.java`
+
+---
+
+## Main
+Ponto de entrada da aplicação.
+
+- Cria o Controller.
+- Inicia a execução do programa.
+
+**Exemplo:**
+- `Main.java`
+
+---
+
+## Fluxo do MVC
+
+```text
+Main
+  │
+  ▼
+Controller
+  ├──► Model (processa os dados)
+  └──► View (exibe os resultados)
+```
+
+## Resumo
+
+| Camada | Função |
+|--------|--------|
+| **Model** | Dados e lógica de negócio. |
+| **View** | Exibe informações ao usuário. |
+| **Controller** | Coordena a comunicação entre Model e View. |
+| **Main** | Inicia a aplicação. |
+
+---
+
 # Anotacoes: Padrao de Desenvolvimento e Benchmark
 
 ## 1. Padrao de Desenvolvimento
