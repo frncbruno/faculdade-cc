@@ -1,3 +1,36 @@
+# Aula 04 - 06/08/2026
+
+## Conceitos
+
+# Anotacoes: Padrao de Desenvolvimento e Benchmark
+
+## 1. Padrao de Desenvolvimento
+
+### MVC (Model-View-Controller)
+Padrao arquitetural que separa a aplicacao em tres camadas principais para organizar o codigo e facilitar a escalabilidade e manutencao:
+- **Model (Modelo):** Gerencia os dados, regras de negocio e logica de persistencia.
+- **View (Visao):** A interface com o usuario (UI), responsavel por exibir visualmente os dados.
+- **Controller (Controlador):** Intermedeia a comunicacao entre o usuario (View) e os dados (Model), tratando requisicoes e regras de fluxo.
+
+### Documentacao
+Pratica fundamental para garantir a manutenibilidade e o entendimento do sistema:
+- **Codigo Limpo:** Nomes descritivos e codigo autoexplicativo como primeira linha de documentacao.
+- **README.md:** Instrucoes claras de configuracao, instalacao, execucao e testes do projeto.
+- **Documentacao Tecnica:** Descricao de APIs, fluxos arquiteturais e contratos de codigo.
+
+---
+
+## 2. Benchmark
+
+Processo sistematico para avaliar o desempenho, a eficiencia e o consumo de recursos de algoritmos ou sistemas atraves de metricas padronizadas.
+
+### Principais Medicoes
+- **Complexidade Operacional:**
+  - **Quantidade de Comparacoes:** Numero de vezes que elementos sao testados/comparados entre si (crucial para algoritmos de busca e ordenacao).
+  - **Quantidade de Trocas (Swaps):** Numero de movimentacoes ou reordenacoes fisicas de dados na memoria.
+- **Tempo de Execucao:**
+  - Medicao do tempo real (wall-clock time) ou tempo de processador (CPU time) necessario para que o algoritmo conclua sua execucao sob diferentes tamanhos de entrada (N).
+
 # Aula 03 - 03/08/2026
 
 ## Conceitos
