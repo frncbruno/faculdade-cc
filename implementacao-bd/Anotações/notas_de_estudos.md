@@ -71,8 +71,32 @@ INSERT INTO editora(nome, cidade, site, ano_fundacao)
 VALUES ("Companhia das Letras", "São Paulo", "www.cdi.br", 1986), 
 	   ("Penguin", "Londres", "www.pg.ldn", 1935);
        
-INSERT INTO Livro (ISBN, titulo, ano_publicacao, fk_id_autor, fk_id_editora)
-VALUES ("Dom Casmurro", "9874689", 1910, 1, 1), ("1984", "7799654", 
+INSERT INTO Livro (titulo, ISBN, ano_publicacao, fk_id_autor, fk_id_editora)
+VALUES ("Dom Casmurro", "9874689", 1910, 1, 1), ("1984", "7799654", 1949, 2, 2);
+
+-- Update
+UPDATE Autor
+SET Autor.nacionalidade = "Brasileiro"
+WHERE Autor.id = 2;
+
+SELECT * FROM Livro;
+SELECT * FROM Autor;
+
+-- Query
+SELECT l.titulo, l.ano_publicacao
+FROM Livro as l
+WHERE l.titulo LIKE "%Dom";
+
+-- Query
+SELECT l.titulo AS "Título", 
+	   l.ano_publicacao AS "Ano de publicação", 
+	   A.nome AS "Autor", 
+	   A.nacionalidade AS "Nacionalidade", 
+       CONCAT(A.nome, "/", A.nacionalidade) AS "Autor/Nacionalidade",
+       e.nome AS "Editora"
+FROM Livro AS l
+JOIN Autor AS a ON l.fk_id_autor = A.id
+JOIN Editora AS e ON l.fk_id_editora = e.id_editora; 
 ```
 
 # Aula 01 - 31/07/2026
