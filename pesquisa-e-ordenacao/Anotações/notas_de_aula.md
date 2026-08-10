@@ -1,8 +1,10 @@
 # Aula 04 - 06/08/2026
 
-## Conceitos
+Realização de exercícios sobre **MVC**.
 
-# MVC (Model - View - Controller)
+---
+
+## Conceitos
 
 ## Model
 Responsável pelos **dados** e pela **lógica de negócio**.
