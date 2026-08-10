@@ -2,8 +2,6 @@
 
 Realização de exercícios sobre **MVC**.
 
----
-
 ## Conceitos
 
 ## Model
