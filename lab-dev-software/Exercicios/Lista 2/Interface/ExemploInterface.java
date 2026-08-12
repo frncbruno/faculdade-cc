@@ -46,16 +46,18 @@ public class ExemploInterface extends javax.swing.JFrame {
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
         btn1 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        btnPercent = new javax.swing.JButton();
         btn0 = new javax.swing.JButton();
         btnResultado = new javax.swing.JButton();
         btnMultiplicacao = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        btnRaiz = new javax.swing.JButton();
         btnCE = new javax.swing.JButton();
         btnC = new javax.swing.JButton();
         btnVirgula = new javax.swing.JButton();
         txtResultado = new javax.swing.JTextField();
         lblValor = new javax.swing.JLabel();
+        btnBackspace = new javax.swing.JButton();
+        btnExpoente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,7 +68,12 @@ public class ExemploInterface extends javax.swing.JFrame {
             }
         });
 
-        btnDivisao.setText("/");
+        btnDivisao.setText("÷");
+        btnDivisao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDivisaoActionPerformed(evt);
+            }
+        });
 
         btn8.setText("8");
         btn8.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +118,11 @@ public class ExemploInterface extends javax.swing.JFrame {
         });
 
         btnSubtracao.setText("-");
+        btnSubtracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubtracaoActionPerformed(evt);
+            }
+        });
 
         btn2.setText("2");
         btn2.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +145,12 @@ public class ExemploInterface extends javax.swing.JFrame {
             }
         });
 
-        jButton13.setText("jButton1");
+        btnPercent.setText("%");
+        btnPercent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPercentActionPerformed(evt);
+            }
+        });
 
         btn0.setText("0");
         btn0.addActionListener(new java.awt.event.ActionListener() {
@@ -156,10 +173,10 @@ public class ExemploInterface extends javax.swing.JFrame {
             }
         });
 
-        jButton17.setText("jButton1");
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        btnRaiz.setText("√");
+        btnRaiz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                btnRaizActionPerformed(evt);
             }
         });
 
@@ -171,6 +188,11 @@ public class ExemploInterface extends javax.swing.JFrame {
         });
 
         btnC.setText("C");
+        btnC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCActionPerformed(evt);
+            }
+        });
 
         btnVirgula.setText(",");
         btnVirgula.addActionListener(new java.awt.event.ActionListener() {
@@ -188,6 +210,21 @@ public class ExemploInterface extends javax.swing.JFrame {
 
         lblValor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
+        btnBackspace.setText("⌫");
+        btnBackspace.setToolTipText("");
+        btnBackspace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackspaceActionPerformed(evt);
+            }
+        });
+
+        btnExpoente.setText("x²");
+        btnExpoente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExpoenteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,7 +235,9 @@ public class ExemploInterface extends javax.swing.JFrame {
                     .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(btn0, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBackspace)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn0, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnVirgula)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -224,19 +263,23 @@ public class ExemploInterface extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(btn5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btn6))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(btnCE, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnC))
-                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn6)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnSoma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnSubtracao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDivisao, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnDivisao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)))
+                        .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnCE, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnPercent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnC)
+                                .addComponent(btnExpoente, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnRaiz, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(116, 116, 116))
         );
         layout.setVerticalGroup(
@@ -248,8 +291,9 @@ public class ExemploInterface extends javax.swing.JFrame {
                 .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton17)
-                    .addComponent(jButton13))
+                    .addComponent(btnRaiz)
+                    .addComponent(btnPercent)
+                    .addComponent(btnExpoente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDivisao)
@@ -277,7 +321,8 @@ public class ExemploInterface extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn0)
                     .addComponent(btnResultado)
-                    .addComponent(btnVirgula))
+                    .addComponent(btnVirgula)
+                    .addComponent(btnBackspace))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
@@ -296,12 +341,18 @@ public class ExemploInterface extends javax.swing.JFrame {
         txtResultado.setText(txtResultado.getText() + "5");
     }                                    
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
-    }                                         
+    private void btnRaizActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        lblValor.setText("√" + txtResultado.getText());
+        n1 = Double.parseDouble(txtResultado.getText());
+        operacao = "raiz";
+        txtResultado.setText("");
+    }                                       
 
     private void btnMultiplicacaoActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
+        lblValor.setText(txtResultado.getText()+"*");
+        n1 = Double.parseDouble(txtResultado.getText());
+        operacao = "multiplicacao";
+        txtResultado.setText("");
     }                                                
 
     private void btnVirgulaActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -313,7 +364,53 @@ public class ExemploInterface extends javax.swing.JFrame {
     }                                    
 
     private void btnResultadoActionPerformed(java.awt.event.ActionEvent evt) {                                             
-       
+        double resultado;
+
+    if (operacao.equals("soma")) {
+        n2 = Double.parseDouble(txtResultado.getText());
+        resultado = n1 + n2;
+        lblValor.setText(n1 + " + " + n2 + " =");
+        txtResultado.setText(String.valueOf(resultado));
+
+    } else if (operacao.equals("subtracao")) {
+        n2 = Double.parseDouble(txtResultado.getText());
+        resultado = n1 - n2;
+        lblValor.setText(n1 + " - " + n2 + " =");
+        txtResultado.setText(String.valueOf(resultado));
+
+    } else if (operacao.equals("multiplicacao")) {
+        n2 = Double.parseDouble(txtResultado.getText());
+        resultado = n1 * n2;
+        lblValor.setText(n1 + " * " + n2 + " =");
+        txtResultado.setText(String.valueOf(resultado));
+
+    } else if (operacao.equals("divisao")) {
+        n2 = Double.parseDouble(txtResultado.getText());
+
+        if (n2 == 0) {
+            txtResultado.setText("Erro");
+            lblValor.setText("Não pode dividir por zero");
+        } else {
+            resultado = n1 / n2;
+            lblValor.setText(n1 + " / " + n2 + " =");
+            txtResultado.setText(String.valueOf(resultado));
+        }
+
+    } else if (operacao.equals("porcentagem")) {
+        n2 = Double.parseDouble(txtResultado.getText());
+        resultado = (n1 / 100) * n2;
+        lblValor.setText(n1 + "% de " + n2 + " =");
+        txtResultado.setText(String.valueOf(resultado));
+
+    } else if (operacao.equals("raiz")) {
+        resultado = Math.sqrt(n1);
+        lblValor.setText("√" + n1 + " =");
+        txtResultado.setText(String.valueOf(resultado));
+    } else if (operacao.equals("expoente")) {
+        resultado = n1 * n1;
+        lblValor.setText(n1 + "² =");
+        txtResultado.setText(String.valueOf(resultado));
+    }
     }                                            
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {                                     
@@ -354,12 +451,90 @@ public class ExemploInterface extends javax.swing.JFrame {
     private void txtResultadoActionPerformed(java.awt.event.ActionEvent evt) {                                             
        double resultado;
        n2 = Double.parseDouble(txtResultado.getText());
-       if (operacao == "soma"){
+       if (operacao.equals("soma")){
            resultado = n1 + n2;
            lblValor.setText(n1 + "+" + n2 + "=");
            txtResultado.setText(String.valueOf(resultado));
        }
+       if (operacao.equals("subtracao")){
+           resultado = n1 + n2;
+           lblValor.setText(n1 + "-" + n2 + "=");
+           txtResultado.setText(String.valueOf(resultado));
+       }
+       if (operacao.equals("multiplicacao")){
+           resultado = n1 + n2;
+           lblValor.setText(n1 + "*" + n2 + "=");
+           txtResultado.setText(String.valueOf(resultado));
+       }
+       if (operacao.equals("porcentagem")){
+           resultado = n1 + n2;
+           lblValor.setText(n1 + "%" + n2 + "=");
+           txtResultado.setText(String.valueOf(resultado));
+       }
+       if (operacao.equals("porcentagem")) {
+        resultado = (n1 / 100) * n2;
+        lblValor.setText(n1 + "% =");
+        txtResultado.setText(String.valueOf(resultado));
+       }
+       if (operacao.equals("raiz")) {
+            resultado = Math.sqrt(n1);
+            lblValor.setText(n1 + "√ =");
+            txtResultado.setText(String.valueOf(resultado));
+       }
+       if (operacao.equals("expoente")) {
+            resultado = Math.pow(n1, n2);
+            lblValor.setText(n1 +"^"+n2+"=");
+            txtResultado.setText(String.valueOf(resultado));
+       }
+       
     }                                            
+
+    private void btnSubtracaoActionPerformed(java.awt.event.ActionEvent evt) {                                             
+       lblValor.setText(txtResultado.getText()+"-");
+        n1 = Double.parseDouble(txtResultado.getText());
+        operacao = "subtracao";
+        txtResultado.setText("");
+    }                                            
+
+    private void btnDivisaoActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        lblValor.setText(txtResultado.getText()+"/");
+        n1 = Double.parseDouble(txtResultado.getText());
+        operacao = "divisao";
+        txtResultado.setText("");
+    }                                          
+
+    private void btnPercentActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        lblValor.setText(txtResultado.getText() + "%");
+        n1 = Double.parseDouble(txtResultado.getText());
+        operacao = "porcentagem";
+        txtResultado.setText("");
+    }                                          
+
+    private void btnCActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        txtResultado.setText("");
+        lblValor.setText("");
+        
+        n1 = 0;
+        n2 = 0;
+        operacao = ""; 
+    }                                    
+
+    private void btnBackspaceActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        String textoAtual = txtResultado.getText();
+        
+        if (textoAtual.length() > 0) {
+            textoAtual = textoAtual.substring(0, textoAtual.length() - 1);
+            
+            txtResultado.setText(textoAtual);
+        }
+    }                                            
+
+    private void btnExpoenteActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        lblValor.setText(txtResultado.getText() + "²");
+    n1 = Double.parseDouble(txtResultado.getText());
+    operacao = "expoente";
+    txtResultado.setText("");
+    }                                           
 
     /**
      * @param args the command line arguments
@@ -397,16 +572,18 @@ public class ExemploInterface extends javax.swing.JFrame {
     private javax.swing.JButton btn7;
     private javax.swing.JButton btn8;
     private javax.swing.JButton btn9;
+    private javax.swing.JButton btnBackspace;
     private javax.swing.JButton btnC;
     private javax.swing.JButton btnCE;
     private javax.swing.JButton btnDivisao;
+    private javax.swing.JButton btnExpoente;
     private javax.swing.JButton btnMultiplicacao;
+    private javax.swing.JButton btnPercent;
+    private javax.swing.JButton btnRaiz;
     private javax.swing.JButton btnResultado;
     private javax.swing.JButton btnSoma;
     private javax.swing.JButton btnSubtracao;
     private javax.swing.JButton btnVirgula;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton17;
     private javax.swing.JLabel lblValor;
     private javax.swing.JTextField txtResultado;
     // End of variables declaration                   
