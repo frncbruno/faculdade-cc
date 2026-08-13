@@ -1,3 +1,121 @@
+# Aula 06 - 13/08/2026
+
+## Conceitos
+
+- Medição de tempo de ordenações em C# (quick sort e agitação)
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+class Ordenacao
+{
+
+    public static void agitacao(List<int> lista)
+    {
+        bool houveTroca;
+        int tmp;
+        int ini = 0;
+        int fim = lista.Count;
+        int qtdComparacoes = 0, qtdTrocas = 0;  //avalia a complexidade ou o esforço
+
+        do
+        {
+            houveTroca = false;
+            for (int i = ini; i < fim - 1; i++)
+            {
+                qtdComparacoes++;
+                if (lista[i] > lista[i + 1])
+                {
+                    qtdTrocas++;
+                    houveTroca = true;
+                    tmp = lista[i];
+                    lista[i] = lista[i + 1];
+                    lista[i + 1] = tmp;
+                }
+            }
+
+            if (!houveTroca)
+            {
+                break;
+            }
+            fim--;
+
+            houveTroca = false;
+            for (int i = fim; i >= ini + 1; i--)
+            {
+                qtdComparacoes++;
+                if (lista[i] < lista[i - 1])
+                {
+                    qtdTrocas++;
+                    houveTroca = true;
+                    tmp = lista[i];
+                    lista[i] = lista[i - 1];
+                    lista[i - 1] = tmp;
+                }
+            }
+            ini++;
+
+        } while (houveTroca);
+    }
+}
+
+class Util
+{
+    public static void popular(List<int> lista, int quantidade)
+    {
+        Random gerador = new Random();
+        for (int i = 0; i < quantidade; i++)
+        {
+            lista.Add(gerador.Next(100000));
+        }
+
+    }
+
+    public static void exibir(List<int> lista)
+    {
+        foreach (var item in lista)
+        {
+            Console.WriteLine(item.ToString());
+        }
+    }
+
+    public static void exibirTempo(Stopwatch sw, string frase)
+    {
+        Console.WriteLine(frase + " (ms): " + sw.ElapsedMilliseconds);
+    }
+}
+
+public class Principal()
+{
+    public static void Main(string[] args)
+    {
+        
+        List<int> listaAgitacao = new List<int>();      
+        List<int> listaSort = new List<int>();
+        Util.popular(listaAgitacao, 100000);
+        Util.popular(listaSort, 100000);
+
+        Stopwatch sw = new Stopwatch();
+
+        sw.Start();
+        Ordenacao.agitacao(listaAgitacao);
+        sw.Stop();
+        Util.exibirTempo(sw, "Ordenacao por agitacao");        
+        sw.Reset();
+
+        sw.Start();
+        listaSort.Sort();
+        sw.Stop();
+        Util.exibirTempo(sw, "Ordenacao por sort nativo");
+        sw.Reset();
+
+
+        //Util.exibir(lista);
+    }
+}
+```  
+
 # Aula 05 - 10/08/2026
 
 ## Conceitos
