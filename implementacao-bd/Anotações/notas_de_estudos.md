@@ -1,3 +1,117 @@
+# Aula 03 - 14/08/2026
+```sql
+-- Distinct
+SELECT DISTINCT F.Salario
+FROM FUNCIONARIO AS F;
+
+SELECT DISTINCT F.Sexo
+FROM FUNCIONARIO AS F;
+
+-- WHERE
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE F.Pnome = 'Carlos';
+
+-- AND
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE 
+	F.Salario >= 30000
+	AND F.Sexo = 'M';
+
+-- OR
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE 
+	F.Endereco LIKE '%São Paulo%' 
+	OR F.Endereco LIKE '%Curitiba%';
+
+-- NOT 
+SELECT * 
+FROM FUNCIONARIO AS F
+WHERE 
+	F.Endereco NOT LIKE '%SP%';
+
+-- ORDER BY
+SELECT 
+    F.Pnome AS 'Nome',
+	F.Unome AS 'Sobrenome',
+	F.Salario AS 'Salario',
+    (F.Salario + COALESCE(F.Bonus, 0)) * 12 AS Custo_Anual
+FROM FUNCIONARIO AS F
+ORDER BY (F.Salario + COALESCE(F.Bonus, 0)) * 12 DESC;
+
+-- NULL
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE F.Cpf_supervisor IS NULL;
+
+-- SELECT TOP/LIMIT
+SELECT TOP 3
+    F.Pnome AS 'Nome',
+	F.Unome AS 'Sobrenome',
+	F.Salario AS 'Salario',
+    (F.Salario + COALESCE(F.Bonus, 0)) * 12 AS Custo_Anual
+FROM FUNCIONARIO AS F
+ORDER BY F.Salario DESC;
+
+-- MIN() MAX()
+SELECT
+	MIN(F.Salario) AS 'Menor salario',
+	MAX(F.Salario) AS 'Maior salario'
+FROM FUNCIONARIO AS F
+
+-- SELECT alinhado
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE 
+	F.Salario = (SELECT MIN(Salario) FROM FUNCIONARIO);
+
+-- Criação de variáveis
+DECLARE @salario_min DECIMAL(10, 2);
+SET @salario_min = (SELECT MIN(Salario) FROM FUNCIONARIO);
+PRINT @salario_min;
+
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE 
+	F.Salario = @salario_min;
+
+-- COUNT()
+SELECT COUNT(F.Cpf)
+FROM FUNCIONARIO AS F;
+
+SELECT COUNT(D.Nome_dependente)
+FROM DEPENDENTE AS D;
+
+SELECT
+	(SELECT COUNT(F.Cpf)
+FROM FUNCIONARIO AS F) +
+	(SELECT COUNT(D.Nome_dependente)
+FROM DEPENDENTE AS D)
+	AS 'Qtd Pessoas';
+
+-- AVG()
+SELECT AVG(F.Salario)
+FROM FUNCIONARIO AS F
+
+-- Pessoas que ganham abaixo da media salarial
+SELECT * 
+FROM FUNCIONARIO AS F 
+WHERE F.Salario < (SELECT AVG(Salario) FROM FUNCIONARIO)
+ORDER BY F.Salario ASC;
+
+-- SUM()
+SELECT SUM(F.Salario) * 12 AS Custo_Anual
+FROM FUNCIONARIO AS F;
+
+-- LIKE
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE F.Datanasc LIKE '__72%';
+
+```
+
 # Aula 02 - 07/08/2026
 ```sql
 -- Criando meu banco
