@@ -3,6 +3,10 @@
 - Entrega de atividade. Testando medição de tempo de diferentes ordenações no modelo MVC.
 - [Clique aqui](https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Exercicios/Lista%202) para checar a atividade.
 
+- Resultado do trabalho:
+<img width="298" height="408" alt="image" src="https://github.com/user-attachments/assets/85499219-c2fa-4d34-abe7-ac88b7408589" />
+
+
 # Aula 06 - 13/08/2026
 
 ## Conceitos
