@@ -1,7 +1,7 @@
 # Aula 07 - 17/08/2026
 
 - Entrega de atividade. Testando medição de tempo de diferentes ordenações no modelo MVC.
-- [Clique aqui](https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Exercicios/Lista%202)
+- [Clique aqui](https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Exercicios/Lista%202) para checar a atividade.
 
 # Aula 06 - 13/08/2026
 
