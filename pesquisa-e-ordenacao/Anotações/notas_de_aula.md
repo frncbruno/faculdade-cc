@@ -1,3 +1,11 @@
+# Aula 08 - 20/08/2026
+
+## Pente (COMB SORT)
+- Uso da distância
+- Instável
+- Variável de comparação de vetores
+- Comparações à distância
+
 # Aula 07 - 17/08/2026
 
 - Entrega de atividade. Testando medição de tempo de diferentes ordenações no modelo MVC.
