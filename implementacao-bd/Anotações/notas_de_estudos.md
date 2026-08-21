@@ -1,3 +1,159 @@
+# Aula 04 - 21/08/2026
+
+```sql
+-- IN
+
+SELECT *
+FROM FUNCIONARIO AS F
+
+LEFT JOIN TRABALHA_EM AS T
+ON T.Fcpf = F.Cpf
+
+LEFT JOIN PROJETO AS P
+ON P.Projnumero = T.Pnr;
+
+SELECT *
+FROM FUNCIONARIO
+WHERE Salario IN (25000, 30000);
+
+SELECT CONCAT(F.Pnome, ' ' ,F.Unome) AS Nome, T.Pnr AS Numero_Projeto
+FROM TRABALHA_EM AS T, FUNCIONARIO AS F
+WHERE 
+	F.Cpf = T.Fcpf
+	AND Pnr IN (
+		SELECT Pnr 
+		FROM TRABALHA_EM 
+		WHERE Fcpf = (
+			SELECT Cpf 
+			FROM FUNCIONARIO
+			WHERE Pnome = 'Fernando')
+			)
+	AND F.Pnome <> 'Fernando'; -- diferente de
+
+-- BETWEEN
+
+SELECT *
+FROM FUNCIONARIO
+WHERE Salario BETWEEN 30000 AND 40000
+AND Dnr = 5;
+
+-- INNER JOIN
+
+SELECT CONCAT(F.Pnome, ' ' ,F.Unome) AS Nome_completo, F.Endereco, D.Dnome AS Departamento
+FROM FUNCIONARIO AS F
+
+INNER JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+WHERE F.Dnr = 5;
+
+/////
+
+SELECT CONCAT(F.Pnome, ' ' ,F.Unome) AS Nome_completo, P.Projnome
+FROM FUNCIONARIO AS F
+
+INNER JOIN TRABALHA_EM AS T
+ON T.Fcpf = F.Cpf
+
+INNER JOIN PROJETO AS P
+ON P.Projnumero = T.Pnr
+
+WHERE P.Projnome = 'ProdutoX';
+
+////
+
+SELECT 
+	P.Projnumero, 
+	D.Dnumero, 
+	D.Dnome, 
+	D.Cpf_gerente, 
+	F.Unome, 
+	P.Projlocal, 
+	F.Datanasc,
+	F.Endereco
+FROM FUNCIONARIO AS F
+
+INNER JOIN TRABALHA_EM AS T
+ON T.Fcpf = F.Cpf
+
+INNER JOIN PROJETO AS P
+ON P.Projnumero = T.Pnr
+
+INNER JOIN DEPARTAMENTO AS D
+ON P.Dnum = D.Dnumero
+
+WHERE P.Projlocal = 'Mauá'
+
+-- LEFT JOIN
+
+SELECT *
+FROM DEPARTAMENTO AS D
+
+LEFT JOIN FUNCIONARIO AS F
+ON D.Dnumero = F.Dnr
+
+WHERE F.Cpf IS NULL; 
+
+-- RIGHT JOIN
+
+SELECT *
+FROM DEPARTAMENTO AS D
+
+RIGHT JOIN FUNCIONARIO AS F
+ON D.Dnumero = F.Dnr
+
+-- CROSS/FULL JOIN
+
+SELECT *
+FROM FUNCIONARIO AS F
+
+FULL JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+WHERE
+	D.Dnumero IS NULL
+	OR F.Cpf IS NULL;
+
+-- SELF JOIN (quando a tabela se relaciona a ela mesma)
+-- comparar linhas e posições hierarquicas
+
+SELECT t1.Pnome, t2.Cpf_supervisor
+FROM FUNCIONARIO AS t1
+
+JOIN FUNCIONARIO AS t2
+ON t1.Cpf = t2.Cpf
+
+WHERE 
+	t2.Cpf_supervisor IS NOT NULL;
+
+
+SELECT 
+	F.Pnome AS 'Funcionario',
+	S.Unome AS 'Supervisor'
+FROM FUNCIONARIO AS F
+
+JOIN FUNCIONARIO AS S
+ON F.Cpf_supervisor = S.Cpf_supervisor
+
+ORDER BY S.Unome;
+
+-- UNION/INTERSECT/EXCEPT
+
+SELECT 
+	F.Pnome AS 'Nome', 
+	F.Sexo AS 'Sexo', 
+	F.Datanasc AS 'Data'
+FROM FUNCIONARIO AS F
+
+UNION
+
+SELECT 
+	D.Nome_dependente AS 'Nome',
+	D.Sexo AS 'Sexo',
+	D.Datanasc AS 'Data'
+FROM DEPENDENTE AS D;
+```
+
 # Aula 03 - 14/08/2026
 ```sql
 -- Distinct
