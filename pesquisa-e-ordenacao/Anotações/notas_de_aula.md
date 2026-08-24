@@ -1,7 +1,11 @@
 # Aula 09 - 24/08/2026
 
 ## Conceitos
-- Estudar pra prova do dia 27: importancia ordenacao, algoritmo estavel e instavel, algoritmos de codificacao simples, nao simples, qnd ordnea lista e objetos, qual metodo preciso reescrever ou controlar a chave primaria (compareTo). como saber se tem maior ou menor complexidade (numero de trocas e comparacoes)
+- Estudar para prova (27/08/2026): **importância da ordenação, algoritmos de ordenação estáveis e instáveis, algoritmos de codificação simples e não simples, ordenação de listas e objetos, métodos necessários para ordenar objetos, especialmente o compareTo, definição e controle da chave primária e da chave secundária na ordenação, e análise da complexidade dos algoritmos, observando principalmente o número de comparações e o número de trocas realizadas.**
+- Exercicio demonstrativo feito pelo professor: [Clique aqui](https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Exercicios/Lista%203)
+- Atividade (fazer o exercício do professor em outra linguagem): [Clique aqui](https://github.com/frncbruno/faculdade-cc/blob/main/pesquisa-e-ordenacao/Exercicios/Lista%203/Pessoa.py)
+
+-- Rascunho: Estudar pra prova do dia 27: importancia ordenacao, algoritmo estavel e instavel, algoritmos de codificacao simples, nao simples, qnd ordnea lista e objetos, qual metodo preciso reescrever ou controlar a chave primaria (compareTo). como saber se tem maior ou menor complexidade (numero de trocas e comparacoes)
 
 # Aula 08 - 20/08/2026
 
