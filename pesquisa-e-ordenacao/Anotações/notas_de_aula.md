@@ -1,3 +1,8 @@
+# Aula 09 - 24/08/2026
+
+## Conceitos
+- Estudar pra prova do dia 27: importancia ordenacao, algoritmo estavel e instavel, algoritmos de codificacao simples, nao simples, qnd ordnea lista e objetos, qual metodo preciso reescrever ou controlar a chave primaria (compareTo). como saber se tem maior ou menor complexidade (numero de trocas e comparacoes)
+
 # Aula 08 - 20/08/2026
 
 ## Pente (COMB SORT)
