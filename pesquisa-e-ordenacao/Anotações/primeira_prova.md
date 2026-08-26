@@ -140,19 +140,19 @@ O(log n) < O(n) < O(n²) < O(n^k) < O(n!)
 ## 12. Código bolha para revisão
 
 ```java
-public static void bolha(int[] vetor) {
+public static void bolha(List<Integer> lista) {
 
     int aux;
 
-    for (int i = 0; i < vetor.length - 1; i++) {
+    for (int i = 0; i < lista.size() - 1; i++) {
 
-        for (int j = 0; j < vetor.length - 1 - i; j++) {
+        for (int j = 0; j < lista.size() - 1 - i; j++) {
 
-            if (vetor[j] > vetor[j + 1]) {
+            if (lista.get(j) > lista.get(j + 1)) {
 
-                aux = vetor[j];
-                vetor[j] = vetor[j + 1];
-                vetor[j + 1] = aux;
+                aux = lista.get(j);
+                lista.set(j, lista.get(j + 1));
+                lista.set(j + 1, aux);
             }
         }
     }
