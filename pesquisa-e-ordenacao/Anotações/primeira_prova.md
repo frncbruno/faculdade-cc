@@ -185,29 +185,44 @@ void bolha(List<> lista) {
 ```java
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public static void main(String[] args) {
+public class BubbleSort {
+    public static void main(String[] args) {
+    Scanner teclado = new Scanner (System.in);
     ArrayList<Integer> lista = new ArrayList<>();
-    lista.add(5);
-    lista.add(3);
-    lista.add(8);
-    lista.add(9);
-    lista.add(15);
 
+    do { 
+        System.out.println("Digite um número inteiro (ou 'sair' para encerrar): ");
+        String opcao = teclado.nextLine();
+        if (opcao.equalsIgnoreCase("sair")){ 
+            break;
+        } else { 
+            int numero = Integer.parseInt(opcao);
+            lista.add(numero);
+        } 
+    } while (true);
+
+    System.out.println("Lista original:");
+    System.out.println(lista);
+ 
     int aux;
 
-    for (int i = 0; i < lista.size() - 1; i++){ 
-        for (int j = 0; j < lista.size() - 1 - i; j++){ 
-            if (lista.get(j) > lista.get(j + 1)){ 
-                aux = lista.get(j);
-                lista.set(j, lista.get(j + 1));
-                lista.set(j + 1, aux);
+    for (int i = 0; i < lista.size() - 1; i++){ // percorre a lista até o penúltimo elemento
+        for (int j = 0; j < lista.size() - 1 - i; j++){ // percorre a lista até o penúltimo elemento
+            if (lista.get(j) > lista.get(j + 1)){  // se o atual elemento for maior que o próximo elemento, troque
+                aux = lista.get(j);  // armazena o valor do elemento atual em uma variável temporária
+                lista.set(j, lista.get(j + 1));  // seta o valor do próximo elemento no elemento atual
+                lista.set(j + 1, aux); // seta o valor da variável temporária no próximo elemento
             }
         }
     }
 
+    System.out.println("Lista ordenada:");
     System.out.println(lista);
-}
+
+    }
+} 
 ```
 
 
