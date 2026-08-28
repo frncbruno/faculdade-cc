@@ -1,3 +1,135 @@
+# Aula 05 - 28/08/2026
+
+```sql
+use EMPRESA;
+
+-- UNION
+SELECT P.Projlocal AS 'Local'
+FROM PROJETO AS P
+
+UNION
+
+SELECT L.Dlocal AS 'Local'
+FROM LOCALIZACAO_DEP AS L;
+
+-- EXCEPT
+SELECT F.Cpf, F.Pnome
+FROM FUNCIONARIO AS F
+
+EXCEPT
+
+SELECT D.Cpf_gerente, F.Pnome
+FROM DEPARTAMENTO AS D
+
+JOIN FUNCIONARIO AS F
+ON D.Cpf_gerente = F.Cpf
+
+-- INTERSECT
+SELECT Cpf
+FROM FUNCIONARIO
+
+INTERSECT
+
+SELECT Cpf_supervisor
+FROM FUNCIONARIO
+
+-- GROUP BY
+SELECT COUNT(F.Cpf) AS 'Qtd_Cpf', F.Sexo
+FROM FUNCIONARIO AS F
+GROUP BY F.Sexo;
+
+-- ///
+SELECT COUNT(F.Cpf) AS 'Qtd_Cpf', D.Dnome
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+GROUP BY D.Dnome;
+
+-- ///
+SELECT SUM(F.Salario) AS 'Soma Salario', D.Dnome
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+GROUP BY D.Dnome;
+
+-- ///
+SELECT AVG(T.Horas) AS 'M Hrs', P.Projnome
+FROM TRABALHA_EM AS T
+
+JOIN PROJETO AS P
+ON T.Pnr = P.Projnumero
+
+GROUP BY P.Projnome
+
+-- ///
+SELECT MAX(F.Salario) AS 'Salario', D.Dnome
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+GROUP BY D.Dnome
+
+-- HAVING
+SELECT COUNT(F.Cpf) AS 'Func', D.Dnome
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+GROUP BY D.Dnome
+HAVING COUNT(F.Cpf) > 3;
+
+-- ///
+SELECT SUM(T.Horas) AS 'Min Hrs', P.Projnome
+FROM TRABALHA_EM AS T
+
+JOIN PROJETO AS P
+ON T.Pnr = P.Projnumero
+
+GROUP BY P.Projnome
+HAVING SUM(T.Horas) >= 50;
+
+-- EXISTS
+SELECT * 
+FROM DEPARTAMENTO AS D
+WHERE EXISTS(
+	SELECT 1
+	FROM PROJETO, DEPARTAMENTO
+	WHERE PROJETO.Dnum = DEPARTAMENTO.Dnumero
+)
+
+-- ANY
+SELECT *
+FROM FUNCIONARIO
+WHERE Salario > ANY(
+SELECT F.Salario
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+WHERE D.Dnome = 'Administração')
+ORDER BY Salario DESC;
+
+-- ALL
+SELECT *
+FROM FUNCIONARIO
+WHERE Salario > ALL(
+SELECT F.Salario
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+WHERE D.Dnome = 'Administração')
+ORDER BY Salario DESC;
+```
+
 # Aula 04 - 21/08/2026
 
 ```sql
