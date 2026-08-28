@@ -1,99 +1,6 @@
 # Aula 05 - 28/08/2026
 
 ```sql
-use EMPRESA;
-
--- UNION
-SELECT P.Projlocal AS 'Local'
-FROM PROJETO AS P
-
-UNION
-
-SELECT L.Dlocal AS 'Local'
-FROM LOCALIZACAO_DEP AS L;
-
--- EXCEPT
-SELECT F.Cpf, F.Pnome
-FROM FUNCIONARIO AS F
-
-EXCEPT
-
-SELECT D.Cpf_gerente, F.Pnome
-FROM DEPARTAMENTO AS D
-
-JOIN FUNCIONARIO AS F
-ON D.Cpf_gerente = F.Cpf
-
--- INTERSECT
-SELECT Cpf
-FROM FUNCIONARIO
-
-INTERSECT
-
-SELECT Cpf_supervisor
-FROM FUNCIONARIO
-
--- GROUP BY
-SELECT COUNT(F.Cpf) AS 'Qtd_Cpf', F.Sexo
-FROM FUNCIONARIO AS F
-GROUP BY F.Sexo;
-
--- ///
-SELECT COUNT(F.Cpf) AS 'Qtd_Cpf', D.Dnome
-FROM FUNCIONARIO AS F
-
-JOIN DEPARTAMENTO AS D
-ON F.Dnr = D.Dnumero
-
-GROUP BY D.Dnome;
-
--- ///
-SELECT SUM(F.Salario) AS 'Soma Salario', D.Dnome
-FROM FUNCIONARIO AS F
-
-JOIN DEPARTAMENTO AS D
-ON F.Dnr = D.Dnumero
-
-GROUP BY D.Dnome;
-
--- ///
-SELECT AVG(T.Horas) AS 'M Hrs', P.Projnome
-FROM TRABALHA_EM AS T
-
-JOIN PROJETO AS P
-ON T.Pnr = P.Projnumero
-
-GROUP BY P.Projnome
-
--- ///
-SELECT MAX(F.Salario) AS 'Salario', D.Dnome
-FROM FUNCIONARIO AS F
-
-JOIN DEPARTAMENTO AS D
-ON F.Dnr = D.Dnumero
-
-GROUP BY D.Dnome
-
--- HAVING
-SELECT COUNT(F.Cpf) AS 'Func', D.Dnome
-FROM FUNCIONARIO AS F
-
-JOIN DEPARTAMENTO AS D
-ON F.Dnr = D.Dnumero
-
-GROUP BY D.Dnome
-HAVING COUNT(F.Cpf) > 3;
-
--- ///
-SELECT SUM(T.Horas) AS 'Min Hrs', P.Projnome
-FROM TRABALHA_EM AS T
-
-JOIN PROJETO AS P
-ON T.Pnr = P.Projnumero
-
-GROUP BY P.Projnome
-HAVING SUM(T.Horas) >= 50;
-
 -- EXISTS
 SELECT * 
 FROM DEPARTAMENTO AS D
@@ -128,6 +35,58 @@ ON F.Dnr = D.Dnumero
 
 WHERE D.Dnome = 'Administração')
 ORDER BY Salario DESC;
+
+-- DECLARE
+DECLARE @nome VARCHAR(100),
+		@idade INT,
+		@salario DECIMAL(10,2),
+		@data DATE;
+
+SET @nome = 'Herysson R. Figueiredo';
+SET @idade = 38;
+SET @salario = 2400;
+SET @data = GETDATE();
+
+-- PRINT 'Olá, SQL! Meu nome é: ' + @nome; 
+PRINT 'Nome : ' + @nome + 
+	  ', Idade: ' + CAST(@idade AS VARCHAR(10));
+
+SELECT 
+	@nome AS 'Nome',
+	@idade AS 'Idade',
+	@salario AS 'Salario',
+	@data AS 'Data de hoje'; 
+
+-- Armazenando variáveis com select
+DECLARE @nomeDpt VARCHAR(50);
+
+SELECT @nomeDpt = Dnome 
+FROM DEPARTAMENTO AS D
+WHERE D.Dnumero = 4;
+
+PRINT 'Departamento: ' + @nomeDpt
+
+-- Exemplo com cálculo
+DECLARE @sJennifer MONEY;
+
+SELECT @sJennifer = Salario
+FROM FUNCIONARIO
+WHERE Pnome = 'Jennifer';
+
+PRINT 'Salário antigo: ' + CAST(@sJennifer AS VARCHAR(20))
+PRINT 'Salário com ajustes de +10%: ' + CAST(@sJennifer * 1.1 AS VARCHAR(20));
+
+-- Exemplo com datas
+DECLARE @dataJennifer DATE,
+		@idadeJennifer INT;
+
+SELECT @dataJennifer = Datanasc
+FROM FUNCIONARIO
+WHERE Pnome = 'Jennifer';
+
+SET @idadeJennifer = (DATEDIFF(YEAR, @dataJennifer, GETDATE()));
+
+PRINT @idadeJennifer;
 ```
 
 # Aula 04 - 21/08/2026
