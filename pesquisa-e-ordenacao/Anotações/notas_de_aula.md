@@ -1,3 +1,56 @@
+# Aula 12 - 03/09/2026
+
+Métodos de baixa complexidade, porém difíceis de implementar.
+
+## Mergesort — Intercalação
+
+- Recursivo
+- Divide a estrutura sempre ao meio
+- Baseado em divisão e conquista
+- Possui:
+  - `merge` → divisão recursiva
+  - `intercalação` → ordenação no retorno da recursão
+- A ordenação acontece durante o desempilhamento.
+
+**Resumo:**
+
+`Divide no meio → Recursão → Intercala no retorno → Ordena`
+
+> Palavra-chave: **intercalação**
+
+## Quicksort — Pivô
+
+- Recursivo
+- Baseado em divisão e conquista
+- Utiliza um pivô como referência
+- A divisão depende da posição do pivô
+- Possui:
+  - `quick` → processo recursivo
+  - `posicional` → organiza os elementos em relação ao pivô
+
+**Resumo:**
+
+`Escolhe pivô → Posiciona → Divide → Recursão`
+
+> Palavra-chave: **pivô**
+
+## Diferença
+
+| Mergesort | Quicksort |
+|---|---|
+| Divide ao meio | Divide pelo pivô |
+| Intercala no retorno | Posiciona pelo pivô |
+| Foco: intercalação | Foco: pivô |
+
+# Aula 11 - 31/08/2026
+
+- Correção da prova e revisão de conteúdos passados.
+
+# Aula 10 - 27/08/2026
+
+- Realização da prova.
+- [Clique aqui](https://github.com/frncbruno/faculdade-cc/blob/main/pesquisa-e-ordenacao/Anota%C3%A7%C3%B5es/primeira_prova.md) para visualizar o resumo feito para a primeira prova.
+
 # Aula 09 - 24/08/2026
 
 ## Conceitos
