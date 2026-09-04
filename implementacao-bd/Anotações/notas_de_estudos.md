@@ -1,3 +1,137 @@
+# Aula 06 - 04/09/2026
+```sql
+-- CAST 
+CAST(VALOR AS TIPONOVO);
+CAST(@VAR AS VARCHAR(100));
+
+GO;
+DECLARE @nome VARCHAR(100),
+		@Salario DECIMAL(10,2);
+SET @nome = 'Jennifer';
+
+SELECT @Salario = Salario
+FROM FUNCIONARIO
+WHERE Pnome = @nome;
+
+PRINT 'O funcionario ' + @nome + ' possui o salário de: ' + CAST(@Salario AS VARCHAR(10));
+GO;
+
+-- CONVERT
+DECLARE @dataNascimento DATE;
+
+SELECT @dataNascimento = dataNasc
+FROM FUNCIONARIO
+WHERE Pnome = 'Jennifer';
+
+SELECT CONVERT(VARCHAR(10), @dataNascimento, 103) AS DataNascimentoFrances;
+
+-- CONDIÇÃO IF/ELSE
+
+GO;
+DECLARE @nome VARCHAR(100),
+		@salarioNome DECIMAL(10,2),
+		@salario_medio DECIMAL(10,2);
+
+SET @nome = 'Jennifer';
+
+SELECT @salario_medio = AVG(Salario)
+FROM FUNCIONARIO;
+
+SELECT @salarioNome = Salario 
+FROM FUNCIONARIO
+WHERE Pnome = @nome;
+
+IF (@salario_medio > @salarioNome)
+	BEGIN 
+	PRINT 'Salário médio ('+ CAST(@salario_medio AS VARCHAR(20)) +') maior que o salário de ' + @nome +' (' + CAST(@salarioNome AS VARCHAR(20)) +')';
+	END
+ELSE 
+	BEGIN
+	PRINT 'Salário médio ('+ CAST(@salario_medio AS VARCHAR(20))+') menor ou igual ao salário de ' + @nome+' (' + CAST(@salarioNome AS VARCHAR(20)) +')';
+	END
+GO;
+
+-- SEGUNDA CONSULTA IF/ELSE
+
+GO;
+-- Declaração de variáveis
+DECLARE @dataNascimento DATE,
+        @pNome VARCHAR(100),
+        @idade INT;
+
+-- Escolha do nome para buscar na variável
+SET @pNome = 'Maria';
+
+-- Busca e salva a data de nascimento com o nome da variável
+SELECT @dataNascimento = dataNasc
+FROM FUNCIONARIO
+WHERE Pnome = @pNome;
+
+-- Define a idade como a diferença da data atual - data de nascimento
+SET @idade = DATEDIFF(YEAR, @dataNascimento, GETDATE());
+
+-- Somando a data de nascimento com a idade, se essa data der maior que a de hoje, desconta -1, porque ainda não fez aniversário
+IF DATEADD(YEAR, @idade, @dataNascimento) > GETDATE()
+BEGIN
+    SET @idade = @idade - 1;
+END
+
+IF @idade > 60
+BEGIN
+    PRINT 'Aposentado(a)';
+    PRINT 'Idade: ' + CAST(@idade AS VARCHAR(3));
+END
+
+ELSE
+BEGIN
+    PRINT 'Não aposentado(a)';
+    PRINT 'Idade: ' + CAST(@idade AS VARCHAR(3));
+END
+GO;
+
+-- IIF()
+SELECT 
+	F.Pnome,
+	F.Unome,
+	F.Salario,
+	IIF(F.Salario < 20000, 'Baixo', 'Alto')
+FROM FUNCIONARIO AS F;
+
+-- CASE
+SELECT 
+	F.Pnome,
+	F.Unome,
+	F.Salario,
+	CASE
+		WHEN F.Salario <= 10000 AND F.Salario > 0 THEN 'Baixo'
+		WHEN F.Salario > 10000 AND F.Salario <= 25000 THEN 'Médio'
+		WHEN F.Salario > 25000 THEN 'Alto'
+		ELSE 'ERRO'
+	END AS 'Categoria'
+FROM FUNCIONARIO AS F;
+
+-- LOOP WHILE()
+DECLARE @contador INT = 0;
+
+WHILE @contador < 10
+BEGIN
+	IF @contador % 2 != 0
+	BREAK;
+	SET @contador = @contador + 1
+	PRINT 'Contador: ' + CAST(@contador AS VARCHAR(3));
+END
+
+-- CURSORES
+DECLARE @nome VARCHAR(50);
+
+DECLARE cursorFuncionario CURSOR FOR
+SELECT Pnome FROM FUNCIONARIO;
+
+OPEN cursorFuncionario;
+
+FETCH NEXT FROM cursorFuncionario INTO @nome;
+```
+
 # Aula 05 - 28/08/2026
 
 ```sql
