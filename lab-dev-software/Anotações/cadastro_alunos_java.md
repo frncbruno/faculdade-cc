@@ -1,4 +1,4 @@
-# 📝 Cola — Cadastro de Alunos em Java Swing
+# 📝 Cadastro de Alunos
 
 Guia rápido para montar o projeto de cadastro de alunos com **ArrayList + JTable + arquivo TXT** no NetBeans.
 
