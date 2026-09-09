@@ -1,4 +1,4 @@
-# 📚 Cola de Prova — Laboratório e Desenvolvimento de Software
+# 📚 Prova — Laboratório e Desenvolvimento de Software
 ## Cadastro de Espécies — Java Swing / NetBeans
 
 > **Objetivo:** guia rápido para montar do zero uma aplicação CRUD simples em Java Swing usando:
