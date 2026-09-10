@@ -1,3 +1,5 @@
+# Aula 12+1 - 10/09/2026
+
 # Aula 12 - 03/09/2026
 
 Métodos de baixa complexidade, porém difíceis de implementar.
