@@ -1,6 +1,6 @@
 # Exercícios - Aula 06 - 04/09/2026
 
-## 📚 Exercícios
+## 📚
 
 [➡️ Aula 04 - Variáveis, Conversões, IF/ELSE e WHILE](https://github.com/Herysson/Implementacao-de-Banco-de-Dados/blob/main/Aula%2004%20-%20Vari%C3%A1veis%20-%20Convers%C3%B5es%20-%20If%20Else%20-%20While.md)
 
