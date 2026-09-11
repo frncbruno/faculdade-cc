@@ -1,3 +1,180 @@
+# Exercícios - Aula 06 - 04/09/2026
+
+## 📚 Exercícios
+
+[➡️ Aula 04 - Variáveis, Conversões, IF/ELSE e WHILE](https://github.com/Herysson/Implementacao-de-Banco-de-Dados/blob/main/Aula%2004%20-%20Vari%C3%A1veis%20-%20Convers%C3%B5es%20-%20If%20Else%20-%20While.md)
+
+```sql
+-- 1.1
+DECLARE @NomeProduto VARCHAR(100),
+	@QtdEstoque INT,
+	@Preco DECIMAL(10,2);
+
+-- 1.2
+SET @NomeProduto = "Notebook";
+SET @QtdEstoque = 15;
+SET @Preco = 2999.99
+
+-- 1.3
+PRINT 'Produto: '+ @NomeProduto;
+PRINT 'Quantidade no estoque: '+ CAST(@QtdEstoque AS VARCHAR(5));
+PRINT 'Produto: '+ CAST(@Preco AS VARCHAR(10));
+
+SELECT 
+    @NomeProduto AS Produto,
+    @QtdEstoque AS Quantidade,
+    @Preco AS Preco;
+
+-- 1.4
+DECLARE @SalarioBase DECIMAL (10,2),
+		@Bonus DECIMAL (10,2),
+		@SalarioTotal DECIMAL (10,2)
+        
+SET @SalarioBase = 5000.00;
+SET @Bonus = 800.00;
+
+SET @SalarioTotal = @SalarioBase + @Bonus;
+
+PRINT CAST(@SalarioTotal AS VARCHAR(10));
+
+SELECT 
+    @SalarioBase AS SalarioBase,
+    @Bonus AS Bonus,
+    @SalarioTotal AS SalarioTotal;
+    
+-- 2.1
+DECLARE @DataAtual DATE;
+
+SET @DataAtual = GETDATE();
+
+PRINT CAST(@DataAtual AS VARCHAR(10));
+SELECT CAST(@DataAtual AS VARCHAR(10)) AS DataAtual;
+
+-- 2.2
+DECLARE @Numero FLOAT;
+
+SET @Numero = 12345.67;
+
+PRINT CONVERT(INT, @Numero);
+SELECT CONVERT(INT, @Numero) AS Numero;
+
+-- 2.3
+DECLARE @nDecimal DECIMAL,
+		@nInteiro INT;
+        
+SET @nDecimal = 32190.45;
+SET @nInteiro = 1909;
+
+PRINT CAST(@nDecimal AS INT); 
+PRINT CONVERT(INT, @nDecimal);
+
+PRINT CAST(@nInteiro AS DECIMAL);
+PRINT CONVERT(DECIMAL, @nInteiro);
+
+-- 2.4
+DECLARE @DataNascimento VARCHAR(10);
+
+SET @DataNascimento = '15/08/1990';
+
+PRINT CONVERT(DATE, @DataNascimento, 103);
+SELECT CONVERT(DATE, @DataNascimento, 103) AS DataNascimento;
+
+-- 3.1
+DECLARE @Idade INT;
+
+IF (@Idade >= 18)
+	BEGIN
+		PRINT 'Maior de idade';
+    END
+ELSE
+	BEGIN
+		PRINT 'Menor de idade';
+    END
+    
+-- 3.2
+DECLARE @NotaFinal INT;
+
+SET @NotaFinal = 93;
+
+IF (@NotaFinal >= 90)
+	BEGIN
+		PRINT 'Aprovado com excelência';
+    END
+ELSE IF (@NotaFinal >= 70 AND @NotaFinal < 90)
+	BEGIN
+		PRINT 'Aprovado';
+    END
+ELSE IF (@NotaFinal >= 50 AND @NotaFinal < 70)
+	BEGIN
+		PRINT 'Em recuperação';
+    END
+ELSE
+	BEGIN
+		PRINT 'Reprovado';
+    END
+    
+-- 3.3
+DECLARE @Ano INT;
+
+SET @Ano = 2005;
+
+IF ((@Ano % 4 = 0 AND @Ano % 100 != 0) OR @Ano % 400 = 0)
+	BEGIN 
+		PRINT 'Ano bissexto';
+    END
+    
+    ELSE
+    BEGIN
+		PRINT 'Ano comum';
+    END
+    
+-- 4.1
+DECLARE @Contador INT;
+
+SET @Contador = 1;
+
+WHILE @Contador <= 10
+	BEGIN
+		PRINT CAST(@Contador AS VARCHAR(2));
+		SET @Contador = @Contador + 1;
+	END
+    
+-- 4.2
+DECLARE @Valor INT;
+
+SET @Valor = 100;
+
+WHILE @Valor >= 50
+BEGIN
+    PRINT @Valor;
+    SET @Valor = @Valor - 5;
+END
+
+-- 4.3 
+-- Esclarecer dúvidas sobre o @Indice
+DECLARE @PrecoLimite DECIMAL(10,2);
+
+SET @PrecoLimite = 100;
+
+SELECT NomeProduto
+FROM Produtos
+WHERE Preco > @PrecoLimite;
+
+-- 4.4
+DECLARE @Numero INT;
+
+SET @Numero = 2;
+
+WHILE (@Numero <= 1000)
+	BEGIN
+		PRINT CAST(@Numero AS VARCHAR(4));
+        SET @Numero = @Numero * 2
+	END
+    
+-- 5. Desafio
+-- Ainda falta o conteúdo PROCEDURE()
+```
+
 # Aula 06 - 04/09/2026
 ```sql
 -- CAST 
