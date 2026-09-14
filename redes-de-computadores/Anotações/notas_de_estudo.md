@@ -1,3 +1,5 @@
+# Aula - 
+
 # Aula - 08/09/2026
 
 a) 192.168.25.15/27
@@ -36,6 +38,62 @@ LAB2 (500 PCS)
 LAB3 (50 PCS)
 LAB4 (1030 PCS)
 LAB5 (15 PCS)
+
+IP: 200.30.128.0
+255.255.248.0
+
+200.30.128.0/21
+
+total de endereços: 2048
+
+hosts utilizáveis: 2046
+
+Lab4: 1030 PCs
+/21 não comporta 1030 hosts com sobra adequada, então:
+
+/21 - 2048 endereços
+
+hosts utilizáveis: 2046
+
+máscara: 255.255.248.0
+
+broadcast: 200.30.135.255
+
+Lab2: 500 PCs
+/23 - 512 endereços
+
+hosts utilizáveis: 510
+
+máscara: 255.255.254.0
+
+broadcast: 200.30.137.255
+
+Lab1: 150 PCs
+/24 - 256 endereços
+
+hosts utilizáveis: 254
+
+máscara: 255.255.255.0
+
+broadcast: 200.30.138.255
+
+Lab3: 50 PCs
+/26 - 64 endereços
+
+hosts utilizáveis: 62
+
+máscara: 255.255.255.192
+
+broadcast: 200.30.139.63
+
+Lab5: 15 PCs
+/27 - 32 endereços
+
+hosts utilizáveis: 30
+
+máscara: 255.255.255.224
+
+broadcast: 200.30.139.95
 
 # Aula 01 - 28/07/2026
 
