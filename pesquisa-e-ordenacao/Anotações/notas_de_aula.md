@@ -1,4 +1,14 @@
-# Aula 12+1 - 10/09/2026
+# Aula 14 - 14/09/2026
+
+- Atividade finalizada de **benchmark ordenação**. Adicionada feature de cadastrar também nas tables, para simular um benchmark.
+- [Clique aqui](https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Exercicios/Lista%205)
+<img width="537" height="722" alt="image" src="https://github.com/user-attachments/assets/8881cf04-8446-4e77-9980-4ffa1aef7013" />
+
+
+# Aula 13 - 10/09/2026
+
+- Início de atividade **benchmark ordenação**.
+- [Clique aqui](https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Exercicios/Lista%205)
 
 # Aula 12 - 03/09/2026
 
