@@ -1,0 +1,218 @@
+-- Exercicios Funções
+
+-- 1.
+CREATE FUNCTION fn_ProjetosPorFuncionario
+(
+    @Cpf CHAR(11)
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT P.Projnome
+    FROM TRABALHA_EM AS T
+    
+    INNER JOIN PROJETO AS P
+    ON P.Projnumero = T.Pnr
+    
+    WHERE T.Fcpf = @Cpf
+);
+GO
+
+SELECT *
+FROM dbo.fn_ProjetosPorFuncionario('12345678966');
+
+-- 2.
+
+CREATE FUNCTION fn_ListarDependentes
+(
+    @Cpf CHAR(11)
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT Nome_dependente,
+           Parentesco
+    FROM DEPENDENTE
+    
+    WHERE Fcpf = @Cpf
+);
+GO
+
+SELECT *
+FROM dbo.fn_ListarDependentes('12345678966');
+
+-- 3. 
+
+CREATE FUNCTION fn_NomeSupervisor
+(
+    @Cpf CHAR(11)
+)
+RETURNS VARCHAR(100)
+AS
+BEGIN
+    DECLARE @NomeSupervisor VARCHAR(100);
+
+    SELECT @NomeSupervisor = CONCAT(S.Pnome, ' ', S.Minicial, ' ', S.Unome)
+    FROM FUNCIONARIO AS F
+    
+    INNER JOIN FUNCIONARIO AS S
+    ON S.Cpf = F.Cpf_supervisor
+    
+    WHERE F.Cpf = @Cpf;
+
+    RETURN @NomeSupervisor;
+END;
+GO
+
+SELECT dbo.fn_NomeSupervisor('12345678966') AS Supervisor;
+
+-- 4.
+
+CREATE FUNCTION fn_GanhaMaisQueSupervisor
+(
+    @Cpf CHAR(11)
+)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @Salario DECIMAL(10,2);
+    DECLARE @SalarioSupervisor DECIMAL(10,2);
+
+    SELECT @Salario = Salario
+    FROM FUNCIONARIO
+    WHERE Cpf = @Cpf;
+
+    SELECT @SalarioSupervisor = S.Salario
+    FROM FUNCIONARIO AS F
+    
+    INNER JOIN FUNCIONARIO AS S
+    ON S.Cpf = F.Cpf_supervisor
+    
+    WHERE F.Cpf = @Cpf;
+
+    IF @Salario > @SalarioSupervisor
+    BEGIN
+        RETURN 1;
+    END
+
+    ELSE
+    BEGIN
+        RETURN 0;
+    END
+END;
+GO
+
+SELECT dbo.fn_GanhaMaisQueSupervisor('12345678966') AS Resultado;
+
+-- 5.
+
+CREATE FUNCTION fn_AnoAposentadoria
+(
+    @DataNascimento DATE
+)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @AnoAposentadoria INT;
+
+    SET @AnoAposentadoria = YEAR(DATEADD(YEAR, 65, @DataNascimento));
+
+    RETURN @AnoAposentadoria;
+END;
+GO
+
+SELECT dbo.fn_AnoAposentadoria('1965-01-09') AS AnoAposentadoria;
+
+
+-- Exercicios 
+
+USE BIBLIOTECA;
+GO
+
+-- 1. 
+
+CREATE PROCEDURE sp_InserirCategoria
+    @Categoria VARCHAR(50)
+AS
+BEGIN
+    INSERT INTO Categoria (tipo_categoria)
+    VALUES (@Categoria);
+END
+GO
+
+EXEC sp_InserirCategoria 'Terror';
+
+
+-- 2. 
+
+CREATE PROCEDURE sp_AtualizarLivro
+    @ISBN VARCHAR(50),
+    @Titulo VARCHAR(100),
+    @Ano INT
+AS
+BEGIN
+    UPDATE Livro
+    SET titulo = @Titulo,
+        ano = @Ano
+    WHERE isbn = @ISBN;
+END
+GO
+
+EXEC sp_AtualizarLivro
+    '8532511015',
+    'Harry Potter e a Pedra Filosofal - Edição Nova',
+    2020;
+
+
+-- 3. 
+
+CREATE PROCEDURE sp_InserirAutor
+    @Nome VARCHAR(100),
+    @Nacionalidade VARCHAR(50)
+AS
+BEGIN
+    INSERT INTO Autor (nome, nacionalidade)
+    VALUES (@Nome, @Nacionalidade);
+END
+GO
+
+EXEC sp_InserirAutor
+    'George Orwell',
+    'Inglaterra';
+
+
+
+-- 4. 
+
+CREATE PROCEDURE sp_ExcluirAutor
+    @IdAutor INT
+AS
+BEGIN
+    DELETE FROM LivroAutor
+    WHERE fk_autor = @IdAutor;
+
+    DELETE FROM Autor
+    WHERE id = @IdAutor;
+END
+GO
+
+EXEC sp_ExcluirAutor 6;
+
+
+-- 5. 
+
+CREATE PROCEDURE sp_LivrosCategoria
+    @Categoria VARCHAR(50)
+AS
+BEGIN
+    SELECT Livro.titulo,
+           Categoria.tipo_categoria
+    FROM Livro, Categoria
+    WHERE Livro.fk_categoria = Categoria.id
+    AND Categoria.tipo_categoria = @Categoria;
+END
+GO
+
+EXEC sp_LivrosCategoria 'Literatura Juvenil';
