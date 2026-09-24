@@ -1,3 +1,43 @@
+# Aula 17 - 24/09/2026
+
+**Shell Sort**  
+- É baseado no Inserção, ou seja, é uma tentativa de melhoria via o uso da ANÁLISE A DISTÂNCIA (tipo pente)
+- Instável 
+- Memória Interna
+- Não é adequado para listas encadeadas
+
+```java
+void shell(Lista<> lista) {
+    int i, j;
+    int tmp;
+    int qtdComparacoes = 0, qtdTrocas = 0;
+    int distancia = 1;
+
+    int referenciaTamanho = 3;
+
+    do {
+        distancia = referenciaTamanho * distancia + 1;
+    } while (distancia < n);
+    
+    do {
+        distancia = (int)(distancia / referenciaTamanho);
+        
+        for (i = distancia; i < n; i++) {
+            tmp = vetor[i];
+            for (j = i - distancia; j >= 0; j = j - distancia) {
+                qtdComparacoes++;
+                if (tmp < vetor[j]) {
+                    vetor[j + distancia] = vetor[j];
+                    qtdTrocas++;
+                } else break;
+            }
+            vetor[j + distancia] = tmp;
+            qtdTrocas++;
+        }
+    } while (distancia > 1);
+}
+```
+
 # Aula 14 - 14/09/2026
 
 - Atividade finalizada de **benchmark ordenação**. Adicionada feature de cadastrar também nas tables, para simular um benchmark.
