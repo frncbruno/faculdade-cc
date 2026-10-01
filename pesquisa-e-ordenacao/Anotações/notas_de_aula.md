@@ -1,15 +1,15 @@
 # Aula 19 - 01/10/2026
 
 ### Ordenação 
-    - algoritmos
-    - definições
+- algoritmos
+- definições
 ### Pesquisa 
-    - dependente de ordenação
-    - quando a estrutura está desordenada, há somente a pesquisa SEQUENCIAL
+- dependente de ordenação
+- quando a estrutura está desordenada, há somente a pesquisa SEQUENCIAL
 
 ### Técnicas de pesquisa
-    - sequencial: a estrutura não precisa estar ordenada
-    - binária: baseada na teoria de árvore, porém a estrutura precisa estar ordenada. retrona somente um elemento, caos ele esteja repetido na estrutura
+- sequencial: a estrutura não precisa estar ordenada
+- binária: baseada na teoria de árvore, porém a estrutura precisa estar ordenada. retrona somente um elemento, caos ele esteja repetido na estrutura
         
 ```python
 def esta_contido(valor_pesquisa, lista);
