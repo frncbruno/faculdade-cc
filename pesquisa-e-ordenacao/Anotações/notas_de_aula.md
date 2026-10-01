@@ -6,7 +6,7 @@
 ### Pesquisa 
 - dependente de ordenação
 - quando a estrutura está desordenada, há somente a pesquisa SEQUENCIAL
-- para medira complexidade são apenas comparações, invés de na ordenação que são comparações e trocas
+- para medir a complexidade são apenas comparações, invés de na ordenação que são comparações e trocas
 
 ### Técnicas de pesquisa
 - sequencial: a estrutura não precisa estar ordenada
