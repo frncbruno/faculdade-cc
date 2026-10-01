@@ -10,7 +10,7 @@
 ### Técnicas de pesquisa
 - sequencial: a estrutura não precisa estar ordenada
 - binária: baseada na teoria de árvore, porém a estrutura precisa estar ordenada. retrona somente um elemento, caos ele esteja repetido na estrutura
-        
+
 ```python
 def esta_contido(valor_pesquisa, lista);
     for item in lista:
@@ -31,7 +31,7 @@ print(esta_contido(numero_pesquisa, lista))
 
 # Aula 18 - 28/09/2026
 
-# Organização da Memória RAM
+### Organização da Memória RAM
 
 A memória RAM possui duas formas principais de organização estrutural:
 
@@ -40,7 +40,7 @@ A memória RAM possui duas formas principais de organização estrutural:
 
 ---
 
-# Heap Sort
+### Heap Sort
 * **Conceito:** Baseado na teoria de árvore binária armazenada diretamente em um vetor.
 * **Indexação:** A primeira posição do vetor **não pode ser zero** (utiliza-se indexação a partir de 1 para simplificar o cálculo das posições).
 * **Fórmulas de Navegação (Indexação Base 1):**
