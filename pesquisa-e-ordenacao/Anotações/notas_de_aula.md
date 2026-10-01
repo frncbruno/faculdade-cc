@@ -1,4 +1,9 @@
-# Aula 19 - 01/10/2026
+<img width="230" height="256" alt="image" src="https://github.com/user-attachments/assets/24c3980f-a96b-4a9b-b512-8263dad1c191" /># Aula 19 - 01/10/2026
+
+### Benchmark
+- Feito o benchmark com 100.000 números com pente, pesquisa sequencial e binária
+<img width="230" height="256" alt="image" src="https://github.com/user-attachments/assets/2cec68f9-1702-4e76-b429-0bdceec00d59" />
+
 
 ### Ordenação 
 - algoritmos
