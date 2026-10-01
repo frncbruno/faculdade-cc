@@ -50,12 +50,6 @@ A memória RAM possui duas formas principais de organização estrutural:
   * Todos os elementos "pai" são maiores ou iguais aos seus elementos "filhos".
   * O algoritmo busca manter os maiores elementos para o topo da árvore (início do vetor).
 
-### Bucket Sort
-* *(Espaço reservado para expansão com base nas pesquisas para a composição das notas de aula)*
-
-### Radix Sort
-* *(Espaço reservado para expansão com base nas pesquisas para a composição das notas de aula)*
-
 # Aula 17 - 24/09/2026
 
 **Shell Sort**  
