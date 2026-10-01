@@ -2,6 +2,7 @@
 
 ### Benchmark
 - Feito o benchmark com 100.000 números com pente, pesquisa sequencial e binária
+- [Código]([https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Exercicios/Lista%205](https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Benchmark))
 <img width="230" height="256" alt="image" src="https://github.com/user-attachments/assets/2cec68f9-1702-4e76-b429-0bdceec00d59" />
 
 
