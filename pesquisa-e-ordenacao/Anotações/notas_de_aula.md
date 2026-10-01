@@ -1,3 +1,61 @@
+# Aula 19 - 01/10/2026
+
+### Ordenação 
+    - algoritmos
+    - definições
+### Pesquisa 
+    - dependente de ordenação
+    - quando a estrutura está desordenada, há somente a pesquisa SEQUENCIAL
+
+### Técnicas de pesquisa
+    - sequencial: a estrutura não precisa estar ordenada
+    - binária: baseada na teoria de árvore, porém a estrutura precisa estar ordenada. retrona somente um elemento, caos ele esteja repetido na estrutura
+        
+```python
+def esta_contido(valor_pesquisa, lista);
+    for item in lista:
+        if item == valor_pesquisa:
+        return True
+
+    return False
+
+lista = [6, 1, 3, 7, 4, 2, 9, 7]
+
+numero_pesquisa = 7
+
+# a ideia de contains
+print(numero_pesquisa in lista)
+print(esta_contido(numero_pesquisa, lista))
+```
+
+
+# Aula 18 - 28/09/2026
+
+# Organização da Memória RAM
+
+A memória RAM possui duas formas principais de organização estrutural:
+
+* **HEAP (Hardware):** Área de memória dinâmica utilizada para alocação em tempo de execução.
+* **STACK (Pilha):** Organizada em pilha de processos (LIFO - *Last In, First Out*), usada para gerenciar o fluxo de execução de funções e variáveis locais.
+
+---
+
+# Heap Sort
+* **Conceito:** Baseado na teoria de árvore binária armazenada diretamente em um vetor.
+* **Indexação:** A primeira posição do vetor **não pode ser zero** (utiliza-se indexação a partir de 1 para simplificar o cálculo das posições).
+* **Fórmulas de Navegação (Indexação Base 1):**
+  * **Filho da esquerda:** `Raiz * 2`
+  * **Filho da direita:** `Raiz * 2 + 1`
+* **Heap Máximo (Max-Heap):**
+  * Todos os elementos "pai" são maiores ou iguais aos seus elementos "filhos".
+  * O algoritmo busca manter os maiores elementos para o topo da árvore (início do vetor).
+
+### Bucket Sort
+* *(Espaço reservado para expansão com base nas pesquisas para a composição das notas de aula)*
+
+### Radix Sort
+* *(Espaço reservado para expansão com base nas pesquisas para a composição das notas de aula)*
+
 # Aula 17 - 24/09/2026
 
 **Shell Sort**  
