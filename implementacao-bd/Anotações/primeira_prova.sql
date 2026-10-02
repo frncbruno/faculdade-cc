@@ -8,7 +8,7 @@ SELECT * FROM TURMA;
 
 GO
 -- Questão 7
-SELECT A.Nome, HE.Nota, T.Semestre, T.Ano
+SELECT A.Nome, HE.Nota, T.Semestre, T.Ano, D.Nome_disciplina
 FROM ALUNO AS A
 
 INNER JOIN HISTORICO_ESCOLAR AS HE
