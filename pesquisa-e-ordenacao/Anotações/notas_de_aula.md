@@ -20,6 +20,10 @@
 
 <img width="523" height="192" alt="image" src="https://github.com/user-attachments/assets/b53f12eb-d9b8-429b-955f-ff536d4a4af9" />
 
+<img width="960" height="211" alt="image" src="https://github.com/user-attachments/assets/8b27279e-1abe-44c1-953e-128fc2dc211d" />
+
+
+
 
 # Aula 19 - 01/10/2026
 
