@@ -13,6 +13,11 @@
   - Ocupa menos espaço e mantém buscas rápidas.
   - Muito usada para pesquisar strings/chaves de forma eficiente.
 
+ - Diferença das ativações de tecla
+   - keyPressed → executado quando uma tecla é pressionada.
+   - keyReleased → executado quando uma tecla é solta.
+   - keyTyped → executado quando um caractere é digitado.
+
 <img width="523" height="192" alt="image" src="https://github.com/user-attachments/assets/b53f12eb-d9b8-429b-955f-ff536d4a4af9" />
 
 
