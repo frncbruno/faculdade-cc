@@ -1,8 +1,17 @@
 # Aula 20 - 05/10/2026
 
-Pesquisa digital
+### Pesquisa digital
 - Árvores TRIE
+  - Estrutura usada para armazenar e pesquisar palavras/chaves.
+  - Cada caminho da árvore representa uma sequência de caracteres.
+  - A busca é rápida, pois percorre os caracteres da palavra.
+  - Exemplo: palavras CASA e CARRO compartilham o início CA.  
+  
 - P.A.T.R.I.C.I.A
+  - É uma versão mais eficiente da TRIE.
+  - Remove caminhos que possuem apenas um filho, compactando a árvore.
+  - Ocupa menos espaço e mantém buscas rápidas.
+  - Muito usada para pesquisar strings/chaves de forma eficiente.
 
 <img width="523" height="192" alt="image" src="https://github.com/user-attachments/assets/b53f12eb-d9b8-429b-955f-ff536d4a4af9" />
 
