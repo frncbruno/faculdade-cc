@@ -1,3 +1,12 @@
+# Aula 20 - 05/10/2026
+
+Pesquisa digital
+- Árvores TRIE
+- P.A.T.R.I.C.I.A
+
+<img width="523" height="192" alt="image" src="https://github.com/user-attachments/assets/b53f12eb-d9b8-429b-955f-ff536d4a4af9" />
+
+
 # Aula 19 - 01/10/2026
 
 ### Benchmark
