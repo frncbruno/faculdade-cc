@@ -5,6 +5,12 @@
 - Uma transação deve ser completamente concluída ou completamente revertida.
 - O principal objetivo de uma transação é garantir a integridade de dados.
 
+### TRANSACTION - COMANDOS
+- **BEGIN TRANSACTION**: Inicia uma nova transação
+- **COMMIT TRANSACTION**: Confirma a transação, aplicando permanentemente todas as operações feitas no banco de dados.
+- **ROLLBACK TRANSACTION**: Desfaz todas as operações realizadas desde o início da transação.
+- **SAVEPOINT**: Define um ponto dentro de uma transação para permitir um rollback parcial, até esse ponto.
+
 ### ACID
 - Atomicidade: garante que uma transação é tratada como uma única unidade, se qualquer parte da transação falhar, todo o resto também falha.
 - Consistência: garante que uma transação leve o banco de dados de um estado válido para outro estado válido, respeitando todas as regras definidas.
@@ -14,6 +20,7 @@
 
 ```sql
 -- TRANSACTION
+
 ```
 
 # Aula 07 - 11/09/2026
