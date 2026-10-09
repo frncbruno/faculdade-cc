@@ -1,4 +1,4 @@
-# Aula 08 - 09/10/2026
+# Aula 11 - 09/10/2026
 
 ### TRANSACTION
 - Uma transação em banco de dados é um conjunto de operações que são tratadas como uma única unidade de trabalho.
