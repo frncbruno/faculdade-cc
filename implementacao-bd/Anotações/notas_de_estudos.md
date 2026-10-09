@@ -1,3 +1,21 @@
+# Aula 08 - 09/10/2026
+
+### TRANSACTION
+- Uma transação em banco de dados é um conjunto de operações que são tratadas como uma única unidade de trabalho.
+- Uma transação deve ser completamente concluída ou completamente revertida.
+- O principal objetivo de uma transação é garantir a integridade de dados.
+
+### ACID
+- Atomicidade: garante que uma transação é tratada como uma única unidade, se qualquer parte da transação falhar, todo o resto também falha.
+- Consistência: garante que uma transação leve o banco de dados de um estado válido para outro estado válido, respeitando todas as regras definidas.
+- Isolamento: garante que as transações sejam feitas de forma isolada, sem que as operações de uma transação afetem as operações da outra.
+- Durabilidade: garante que após o commit, ela permanecerá no banco de dados, mesmo que ocorra uma falha no sistema, os dados serão persistidos no armazenamento.
+
+
+```sql
+-- TRANSACTION
+```
+
 # Aula 07 - 11/09/2026
 
 ```sql
