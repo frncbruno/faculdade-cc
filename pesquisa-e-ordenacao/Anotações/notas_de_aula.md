@@ -1,3 +1,7 @@
+# Aula 21 - 08/10/2026
+- Exercício simulando o CTRL + F (pesquisar) e destacando as letras/palavras conforme insere.
+- [Código](https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Exercicios/Lista%207)
+
 # Aula 20 - 05/10/2026
 
 ### Pesquisa digital
