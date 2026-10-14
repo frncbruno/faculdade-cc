@@ -19,23 +19,47 @@
 - Hash não é possível ordenar, por isso que em uma table se usa list, por exemplo
 
 ```java
-  public class ExemploHashSimples {
-    public static void main(String[] args){
-      HashSet<String> tabelaHashString = new HashSet<>();
+import java.util.HashSet;
 
-      tabelaHashString.add("alexandre");
-      tabelaHashString.add("hermes");
-      tabelaHashString.add("davi");
-      tabelaHashString.add("alan");
-      tabelaHashString.add("alexandre");
-      tabelaHashString.add("davi");
+public class Sessao {
+    public String numeroCelular;
+    public String dadosSessao;
 
-      System.out.println(tabelaHashString);
-      for (String item : tabelaHashString){
-        System.out.println(item + "=> " +item.hashCode()); -- mostra o endereço
-      }
+    public Sessao(String numeroCelular, String dadosSessao) {
+        this.numeroCelular = numeroCelular;
+        this.dadosSessao = dadosSessao;
     }
-  }
+
+    @Override
+    public String toString() {
+        return "Sessao [numeroCelular=" + numeroCelular + ", dadosSessao=" + dadosSessao + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((numeroCelular == null) ? 0 : numeroCelular.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Sessao other = (Sessao) obj;
+        if (numeroCelular == null) {
+            if (other.numeroCelular != null)
+                return false;
+        } else if (!numeroCelular.equals(other.numeroCelular))
+            return false;
+        return true;
+    }
+}
 ```
 
 ### Diferença de HashMap x HashSet
