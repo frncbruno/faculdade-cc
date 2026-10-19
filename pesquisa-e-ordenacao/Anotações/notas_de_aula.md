@@ -1,6 +1,6 @@
 # Aula 24 - 19/10/2026
 - Tabela hash só é boa quando a estrutura de armazenamento é gigantesca, se for pequena vai dar muita colisão
-- [Código](https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Exercicios)
+- [BaseHash](https://github.com/frncbruno/faculdade-cc/tree/main/pesquisa-e-ordenacao/Exercicios)
 
 # Aula 23 - 15/10/2026
 - Realização do exercício sobre sessões de telefonia (pesquisa de números e aplicação em Hash)
