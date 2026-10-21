@@ -16,7 +16,7 @@ VALUES
 ("Joe", "M", "Espanhol"),
 ("Mary", "F", "Inglês");
 
-create TABLE VEICULO (
+CREATE TABLE veiculo (
 id int AUTO_INCREMENT PRIMARY KEY,
 modelo VARCHAR(30),
 placa VARCHAR(7),
