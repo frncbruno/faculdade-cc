@@ -1,3 +1,27 @@
+# Aula 13 - 23/10/2026
+
+### TRIGGER
+- Regras que especificam ações que são automaticamente disparadas por certos eventos.
+- Conceito de trigger: **uma técnica para especificar certos tipos de regras ativas.**
+- O modelo usado para especificar regras de banco de dados ativo é conhecido como modelo **Evento-Condição-Ação (ECA)**.
+- Um trigger (gatilho) é um tipo especial de stored procedure que é executada automaticamente quando um usuário realiza uma operação de modificação de dados em uma tabela específica.
+- As operações que podem disparar um trigger são: **INSERT, UPDATE, DELETE** (DML).
+
+### MODOS DE DISPARO - TRIGGER
+- After: o código presente no trigger é executado após todas as ações terem sido completadas na tabela especificada.
+- Instead Of: o código presente no trigger é executado no lugar da operação que causou seu disparo.
+<img width="949" height="424" alt="image" src="https://github.com/user-attachments/assets/0937c1b5-5b08-4e9f-9be6-f7b51b0cdebf" />
+
+### FLUXO DE TRANSAÇÕES - TRIGGER
+<img width="840" height="390" alt="image" src="https://github.com/user-attachments/assets/0112c85f-972c-4d6a-817b-ea8423e0ace2" />
+
+### VIEW 
+- Select salvo no formato de uma tabela
+- Velocidade de acesso às informações, mascara complexidade, simplifica o gerenciamento de permissão de usuários, etc.
+
+# Aula 12 - 16/10/2026
+- SIRC
+
 # Aula 11 - 09/10/2026
 
 ### TRANSACTION
