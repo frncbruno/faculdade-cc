@@ -19,6 +19,206 @@
 - Select salvo no formato de uma tabela
 - Velocidade de acesso às informações, mascara complexidade, simplifica o gerenciamento de permissão de usuários, etc.
 
+```sql
+CREATE OR ALTER TRIGGER trg_after_insert_dpt
+ON DEPARTAMENTO
+AFTER INSERT
+AS
+BEGIN
+	DECLARE @nome VARCHAR(40);
+	SELECT @nome = I.Dnome
+	FROM inserted AS I;
+
+	PRINT 'Foi inserido um novo departamento: ' + @nome;
+END;
+GO
+
+INSERT INTO DEPARTAMENTO(Dnumero, Dnome)
+VALUES(88,'Expedição')
+GO;
+
+CREATE TRIGGER trg_insetadof_delete_dpt
+ON DEPARTAMENTO
+INSTEAD OF DELETE
+AS
+BEGIN
+	PRINT 'NÃO DELETEI o registro';
+END
+
+DELETE 
+FROM DEPARTAMENTO
+WHERE Dnumero = 88
+
+ALTER TABLE DEPARTAMENTO
+DISABLE TRIGGER trg_insetadof_delete_dpt;
+
+EXEC sp_helptrigger DEPARTAMENTO;
+GO;
+
+CREATE OR ALTER TRIGGER trg_insteadof_insert_dpt
+ON DEPARTAMENTO
+INSTEAD OF INSERT
+AS BEGIN
+	DECLARE @nome VARCHAR(40), @numero INT;
+	-- ATRIBUIR A VARIÁVEL @nome O VALOR QUE ESTÁ NO INSERT
+	SELECT @nome = I.Dnome, @numero = Dnumero FROM inserted AS I
+	IF EXISTS (SELECT 1 FROM DEPARTAMENTO WHERE Dnome = @nome)
+		RAISERROR('Já existe um departamento com esse time', 16, 1);
+	ELSE
+		BEGIN
+		INSERT INTO DEPARTAMENTO (Dnumero, Dnome, Cpf_gerente, Data_inicio_gerente)
+		SELECT I.Dnumero, I.Dnome, I.Cpf_gerente, I.Data_inicio_gerente
+		FROM inserted AS I
+		END
+END
+
+GO
+CREATE OR ALTER TRIGGER trg_after_insert_dpt
+ON DEPARTAMENTO
+AFTER INSERT
+AS
+BEGIN
+	DECLARE @nome VARCHAR(40);
+	-- ATRIBUIR A VARIÁVEL @nome O VALOR QUE ESTÁ NO INSERT
+	SELECT @nome = I.Dnome FROM inserted AS I
+
+	SELECT * FROM DEPARTAMENTO;
+
+	IF ((SELECT COUNT(D.Dnome) DEPARTAMENTO WHERE Dnome = 'TI') > 1)
+	BEGIN
+		ROLLBACK TRANSACTION;
+		RAISERROR('Já existe um departamento com esse time', 16, 1);
+	END
+END
+GO
+
+GO
+-- Função UPDATE()
+-- Verificar se um nome foi alterado
+
+CREATE TRIGGER trg_for_update_nome
+ON DEPARTAMENTO
+FOR UPDATE -- FOR = AFTER
+AS
+BEGIN
+	DECLARE @nome_antigo VARCHAR(40),
+			@nome_novo VARCHAR(40)
+
+	SELECT @nome_antigo = D.Dnome FROM deleted AS D;
+	SELECT @nome_novo = I.Dnome FROM inserted AS I
+
+	IF UPDATE(Dnome)
+	BEGIN
+		PRINT 'O nome era: ' + @nome_antigo;
+		PRINT 'O novo nome é: ' + @nome_novo;
+	END
+	ELSE
+		PRINT 'O nome não foi alterado';
+END
+
+UPDATE DEPARTAMENTO
+SET Dnome = 'Tecnologia'
+WHERE Dnome = 'TI';
+GO
+
+GO
+CREATE TABLE LOG_FUNCIONARIO(
+	log_id INT IDENTITY(100, 1) PRIMARY KEY,
+	cpf CHAR(11),
+	operacao VARCHAR(10),
+	data_hora DATETIME DEFAULT GETDATE()
+
+);
+GO
+
+GO
+-- TRIGGER DE LOG DE INSERT
+CREATE TRIGGER trg_for_insert_funcionario
+ON FUNCIONARIO
+FOR INSERT
+AS
+BEGIN
+	INSERT INTO LOG_FUNCIONARIO (cpf, operacao) 
+	SELECT I.Cpf, 'INSERT'
+	FROM inserted AS I
+END
+GO
+
+GO
+CREATE TRIGGER trg_for_delete_funcionario
+ON FUNCIONARIO
+FOR DELETE
+AS
+BEGIN
+	INSERT INTO LOG_FUNCIONARIO (cpf, operacao) 
+	SELECT I.Cpf, 'DELETE'
+	FROM deleted AS I
+END
+GO
+
+GO
+CREATE TRIGGER trg_for_update_funcionario
+ON FUNCIONARIO
+FOR UPDATE
+AS
+BEGIN
+	INSERT INTO LOG_FUNCIONARIO (cpf, operacao) 
+	SELECT I.Cpf, 'UPDATE'
+	FROM inserted AS I
+END
+GO
+
+-- LOG DE INSERT, DELETE E UPDATE
+GO
+CREATE TRIGGER trg_for_IDU_funcionario 
+ON FUNCIONARIO 
+AFTER INSERT, DELETE, UPDATE 
+AS 
+BEGIN
+    -- Se houve INSERT (e não DELETE/UPDATE)
+    IF EXISTS (SELECT * FROM inserted) AND NOT EXISTS (SELECT * FROM deleted)
+    BEGIN
+        INSERT INTO LOG_FUNCIONARIO (cpf, operacao) 
+        SELECT I.Cpf, 'INSERT'
+        FROM inserted AS I
+    END
+
+    -- Se houve UPDATE (existem registros tanto em inserted quanto em deleted)
+    IF EXISTS (SELECT * FROM inserted) AND EXISTS (SELECT * FROM deleted)
+    BEGIN
+        INSERT INTO LOG_FUNCIONARIO (cpf, operacao) 
+        SELECT I.Cpf, 'UPDATE'
+        FROM inserted AS I
+    END
+
+    -- Se houve DELETE (existem registros em deleted, mas não em inserted)
+    IF NOT EXISTS (SELECT * FROM inserted) AND EXISTS (SELECT * FROM deleted)
+    BEGIN
+        INSERT INTO LOG_FUNCIONARIO (cpf, operacao) 
+        SELECT I.Cpf, 'DELETE'
+        FROM deleted AS I
+    END
+END
+GO
+
+-- VIEW
+GO
+CREATE VIEW vw_rh_funcionario_dpt
+AS
+SELECT
+	CONCAT(Pnome, ' ', Minicial, '. ', Unome) AS 'Nome',
+	DATEDIFF(YEAR, Datanasc, GETDATE()) AS 'Idade',
+	Endereco AS 'Endereço',
+	Data_Admissao AS 'Admissão',
+	D.Dnome AS 'Departamento'
+FROM FUNCIONARIO AS F
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero;
+GO
+
+SELECT * FROM vw_rh_funcionario_dpt;
+```
+
 # Aula 12 - 16/10/2026
 - SIRC
 
