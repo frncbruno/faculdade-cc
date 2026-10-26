@@ -1,6 +1,6 @@
 # Aula 26 - 26/10/2026
 
-# Técnicas de armazenamento - pesquisa digital 
+### Técnicas de armazenamento - pesquisa digital 
 - Árvores TRIE
   - Estrutura usada para armazenar e pesquisar palavras/chaves.
   - Cada caminho da árvore representa uma sequência de caracteres.
