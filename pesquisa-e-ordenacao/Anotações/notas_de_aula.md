@@ -1,7 +1,7 @@
 # Aula 26 - 26/10/2026
 
-### fdssss
-- robaro meu bolsonaro
+### Técnicas de Armazenamento - Pesquisa digital
+- Árvore TRIE
   - Estrutura usada para armazenar e pesquisar palavras/chaves.
   - Cada caminho da árvore representa uma sequência de caracteres.
   - A busca é rápida, pois percorre os caracteres da palavra.
