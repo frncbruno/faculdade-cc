@@ -1,3 +1,18 @@
+# Aula 26 - 26/10/2026
+
+# Técnicas de armazenamento - pesquisa digital 
+- Árvores TRIE
+  - Estrutura usada para armazenar e pesquisar palavras/chaves.
+  - Cada caminho da árvore representa uma sequência de caracteres.
+  - A busca é rápida, pois percorre os caracteres da palavra.
+  - Exemplo: palavras CASA e CARRO compartilham o início CA.  
+  
+- P.A.T.R.I.C.I.A
+  - É uma versão mais eficiente da TRIE.
+  - Remove caminhos que possuem apenas um filho, compactando a árvore.
+  - Ocupa menos espaço e mantém buscas rápidas.
+  - Muito usada para pesquisar strings/chaves de forma eficiente.
+
 # Aula 25 - 22/10/2026
 - Fazer uma pesquisa sobre: LLM + Transformers + Embedding + RAG
 
