@@ -1,6 +1,10 @@
 # Aula 26 - 26/10/2026
 
 ### Técnicas de Armazenamento - Pesquisa digital
+[Aula Professor](https://github.com/alexandrezamberlan/pesquisa_ordenacao/blob/master/07-pesquisaDigital/trie_patricia.md)  
+
+As árvores Trie e PATRICIA são estruturas de dados baseadas em pesquisa digital, o que significa que elas buscam informações caractere por caractere (ou bit a bit) em vez de comparar a chave inteira de uma vez só (como ocorre em uma árvore binária tradicional). Elas são amplamente utilizadas para buscas de prefixos, sistemas de autocompletar e roteamento de redes. A principal diferença entre elas está na forma como lidam com o espaço na memória: enquanto a Trie padrão cria um nó para cada caractere, a PATRICIA compacta a estrutura unindo caminhos que não se ramificam.  
+
 - Árvore TRIE
   - Estrutura usada para armazenar e pesquisar palavras/chaves.
   - Cada caminho da árvore representa uma sequência de caracteres.
@@ -12,6 +16,9 @@
   - Remove caminhos que possuem apenas um filho, compactando a árvore.
   - Ocupa menos espaço e mantém buscas rápidas.
   - Muito usada para pesquisar strings/chaves de forma eficiente.
+ 
+<img width="782" height="219" alt="image" src="https://github.com/user-attachments/assets/dd39f5af-489e-4209-ba2c-a6f9aa3626c1" />
+
 
 # Aula 25 - 22/10/2026
 - Fazer uma pesquisa sobre: LLM + Transformers + Embedding + RAG
