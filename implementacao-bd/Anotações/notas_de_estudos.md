@@ -1,3 +1,41 @@
+# Aula 14 - 30/10/2026
+
+### RESTRIÇÕES DE INTEGRIDADE
+- **Declarativa**
+   - Na forma declarativa, as restrições de integridade são parametrizadas 
+durante a criação das estruturas das tabelas, utilizando a linguagem SQL, na 
+categoria DDL (Data Definition Language), fazendo uso de chaves primárias 
+(PK), impedindo valores não nulos, utilizando tipos e domínios de dados e 
+aplicando regras de integridade referencial
+- **Procedural**
+   - Na forma procedural (também chamadas de restrições semânticas), é 
+possível fazer uso de recursos como gatilhos (triggers), procedimentos 
+armazenados (stored procedures), bem como de afirmações (assertion). 
+Geralmente a forma procedural é implementada por programadores ou 
+analistas especializados na linguagem  e no SGBD, com auxílio das regras de 
+negócio passadas pelos clientes
+
+### 5 PRINCIPAIS RESTRIÇÕES DE INTEGRIDADE
+- Integridade de Domínio: Valores inseridos em uma coluna devem sempre obedecer à definição 
+dos valores que são permitidos para essa coluna – os valores do domínio. Ex.: em uma coluna que armazena preços de mercadorias, os valores 
+admitidos são do domínio numérico – ou seja, apenas números. Não há preços usando letras para sua representação.
+- Integridade Referencial: A restrição de Integridade Referencial assegura que valores de uma 
+coluna em um tabela são válidos baseados nos valores em uma outra tabela relacionada. Exemplo: Se um produto de ID 435 foi cadastrado em um tabela de Vendas, 
+então um produto com o ID 435 deve existir na tabela de Produtos relacionada. Se um registro for excluído em uma tabela, então os registros relacionados 
+em outras tabelas que o referenciam talvez precisem ser excluídos, caso contrário ocorrerá erro.
+
+- Integridade de Vazio: Este tipo de integridade informa se a coluna é obrigatória ou opcional - ou seja, se é possível não inserir um valor na coluna. Uma coluna de chave primária, por exemplo, sempre deve ter dados 
+inseridos, e nunca pode estar vazia para nenhum registro
+- Integridade de Chave: Os valores inseridos na coluna de chave primária (PK) devem ser 
+sempre únicos, não admitindo-se repetições nesses valores. Desta forma, as tuplas (registros) serão sempre distintas. Os valores de 
+chave primária também não podem ser nulos
+- Integridade Definida pelo Usuário: A integridade definida pelo usuário permite definir regras comerciais 
+que não se encaixam em outras categorias de integridade. Todas as 
+categorias de integridade oferecem suporte à integridade definida pelo 
+usuário. Determina os valores aceitos para a respectiva coluna.
+
+
+
 # Aula 13 - 23/10/2026
 
 ### TRIGGER
@@ -18,6 +56,8 @@
 ### VIEW 
 - Select salvo no formato de uma tabela
 - Velocidade de acesso às informações, mascara complexidade, simplifica o gerenciamento de permissão de usuários, etc.
+- Tabela virtual
+- Consulta SQL
 
 ```sql
 CREATE OR ALTER TRIGGER trg_after_insert_dpt
