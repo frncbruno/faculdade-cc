@@ -23,6 +23,10 @@ admitidos são do domínio numérico – ou seja, apenas números. Não há pre�
 coluna em um tabela são válidos baseados nos valores em uma outra tabela relacionada. Exemplo: Se um produto de ID 435 foi cadastrado em um tabela de Vendas, 
 então um produto com o ID 435 deve existir na tabela de Produtos relacionada. Se um registro for excluído em uma tabela, então os registros relacionados 
 em outras tabelas que o referenciam talvez precisem ser excluídos, caso contrário ocorrerá erro.
+  - CASCADE: Se um registro for excluído em uma tabela (operações 
+DELETE e TRUNCATE), então os registros relacionados em outras tabelas 
+que o referenciam talvez precisem ser excluídos. Caso contrário ocorrerá 
+erro.  O mesmo se dá com a atualização de registros (operação UPDATE)
 
 - Integridade de Vazio: Este tipo de integridade informa se a coluna é obrigatória ou opcional - ou seja, se é possível não inserir um valor na coluna. Uma coluna de chave primária, por exemplo, sempre deve ter dados 
 inseridos, e nunca pode estar vazia para nenhum registro
