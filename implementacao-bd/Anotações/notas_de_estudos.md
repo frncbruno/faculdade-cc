@@ -38,7 +38,176 @@ que não se encaixam em outras categorias de integridade. Todas as
 categorias de integridade oferecem suporte à integridade definida pelo 
 usuário. Determina os valores aceitos para a respectiva coluna.
 
+```sql
+CREATE DATABASE LOJA;
+GO;
 
+USE LOJA;
+GO;
+
+CREATE TABLE CATEGORIA(
+id INT PRIMARY KEY, 
+nome VARCHAR(60) NOT NULL
+CONSTRAINT uq_categoria_nome UNIQUE (NOME) --provavel chave primaria
+);
+GO;
+
+CREATE TABLE FORNECEDOR(
+id INT PRIMARY KEY, 
+nome VARCHAR(60) NOT NULL,
+telefone VARCHAR(20) NULL
+);
+GO;
+
+CREATE TABLE PRODUTO (
+	id INT IDENTITY (100,1) PRIMARY KEY,
+	nome VARCHAR(80) NOT NULL,
+	preco DECIMAL(10,2) NOT NULL,
+	quantidade INT NOT NULL CONSTRAINT df_prof_quantidade DEFAULT 0, --se passar um prdt e for 0 a qntd não cadastra
+	situacao VARCHAR(10) NOT NULL DEFAULT 'Ativo',
+	id_categoria INT NOT NULL,
+	id_fornecedor INT NULL,
+
+	CONSTRAINT ck_prod_preco CHECK(preco>0), --restrições permitem fazer qlqr operacao logica dentro de sua estrutura
+	CONSTRAINT ck_prod_qts CHECK (quantidade>=0),
+	CONSTRAINT ck_prod_SITUACAO CHECK (situacao IN ('Ativo', 'Inativo')),
+
+	CONSTRAINT fk_prod_categoria 
+		FOREIGN KEY (id_categoria) REFERENCES CATEGORIA(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
+ALTER TABLE PRODUTO
+ADD CONSTRAINT fk_prod_fornecedor
+	FOREIGN KEY (id_fornecedor) REFERENCES FORNECEDOR(id)
+	ON DELETE SET NULL
+	ON UPDATE CASCADE;
+GO;
+
+INSERT INTO CATEGORIA (id,nome) VALUES
+	(10, 'Informática'),
+	(20,'Papelaria'),
+	(30, 'Acessórios');
+
+INSERT INTO FORNECEDOR (id,nome, telefone) VALUES
+	(1, 'Distribuidora Alfa', '5555-6666'),
+	(2, 'Comercial Ltda', NULL);
+
+INSERT INTO PRODUTO 
+	(nome, preco, quantidade, situacao, id_categoria, id_fornecedor)
+VALUES
+	('Mouse', 80, 15, 'Ativo', 10, 1),
+	('Teclado USB', 120, 8, 'Ativo', 10, 2),
+	('Caderno', 29.90, 50, 'Ativo', 20, 2),
+	('Caneta', 4.50, 100, 'Ativo', 20, 2);
+GO;
+
+INSERT INTO PRODUTO
+	(nome, preco, id_categoria)
+VALUES
+	('Fone de Ouvido', 99.99, 30);
+
+SELECT * FROM PRODUTO;
+--UPDATE CASCADE
+UPDATE CATEGORIA
+SET id=11
+WHERE id=10;
+
+--DELETE SET NULL
+DELETE FROM FORNECEDOR
+WHERE id=1;
+
+--DELETE CASCADE
+DELETE FROM CATEGORIA
+WHERE id =20;
+
+SELECT * FROM CATEGORIA;
+
+GO;
+CREATE VIEW vw_listagem_geral_prod
+AS
+
+SELECT 
+	P.nome AS 'Produto',
+	P.quantidade AS 'Quantidade',
+	P.situacao AS 'Situacao',
+	F.nome AS 'Fornecedor',
+	F.telefone AS 'Tel. Fornecedor',
+	C.nome AS 'Categoria'
+FROM PRODUTO AS P
+LEFT JOIN FORNECEDOR AS F
+ON P.id_fornecedor = F.id
+JOIN CATEGORIA AS C
+ON P.id_categoria = C.id
+
+SELECT * FROM vw_listagem_geral_prod
+WHERE Quantidade > 0 ORDER BY;
+GO;
+
+------
+
+-- Criar usuário (Banco de Dados > Segurança > clicar com o botão direito)
+
+GRANT SELECT, INSERT ON [dbo].[CATEGORIA] TO Juca;
+GRANT SELECT ON [dbo].[FORNECEDOR] TO Juca;
+GRANT SELECT ON [dbo].[PRODUTO] TO Juca;
+
+-- DENY >>>>>>> GRANT
+DENY INSERT ON [dbo].[CATEGORIA] TO Juca;
+
+-- REVOKE, parecido com um clear. ele só tira a permissao, nao importa qual seja
+REVOKE SELECT ON [dbo].[PRODUTO] TO Juca;
+
+-- Exercícios Revisão Trigger
+SELECT * FROM LivroAutor;
+
+GO
+CREATE TRIGGER trg_for_insert_la
+ON LivroAutor
+AFTER INSERT
+AS
+BEGIN
+	DECLARE @id_autor INT, @qtd_livros INT;
+
+	SELECT @id_autor = I.fk_autor
+	FROM inserted AS I;
+
+	SELECT @qtd_livros = COUNT(fk_livro)
+	FROM LivroAutor
+	WHERE fk_autor = @id_autor;
+
+	PRINT 'Este autor escreveu : '+CAST(@qtd_livros AS VARCHAR(10)) + ' livros';
+END
+
+SELECT * FROM Livro;
+INSERT INTO Livro
+VALUES ('419874', 'Harry Potter e a Camara Secreta', 2000, 1,1),
+	   ('421917', 'Harry Potter e a Reliquias da Morte', 2000, 1,1);
+
+	   INSERT INTO LivroAutor
+	   (1, '421917');
+
+GO
+CREATE TRIGGER trg_restringirISBN
+ON LIVRO
+INSTEAD OF UPDATE
+AS
+BEGIN
+	RAISERROR('ISBN não pode ser alterado', 16, 1);
+END
+GO
+
+GO
+IF (SELECT COUNT(*) FROM Livro AS L
+JOIN Categoria AS C
+ON L.fk_categoria = C.id
+WHERE C.id =11 > 5
+PRINT 'TEM MAIS QUE 5 LIVROS'
+
+ELSE
+PRINT 'TEM MENOS QUE 5 LIVROS'
+```
 
 # Aula 13 - 23/10/2026
 
