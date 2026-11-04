@@ -1,0 +1,156 @@
+GUIA RÁPIDO — PARSE EM JAVA Exemplos para guardar e consultar na prova
+
+1.  O QUE É PARSE?
+
+Os métodos parse convertem um texto (String) em um tipo numérico ou
+lógico. São muito usados quando o usuário digita um valor em um
+JTextField.
+
+Exemplo: String texto = “25”; int numero = Integer.parseInt(texto);
+
+ATENÇÃO: - parseInt() converte String para int. - parseDouble() converte
+String para double. - parseFloat() converte String para float. -
+parseLong() converte String para long. - parseBoolean() converte String
+para boolean. - Se o texto não representar um valor válido, pode ocorrer
+NumberFormatException.
+
+2.  CONVERSÕES MAIS USADAS
+
+STRING PARA INT String texto = “10”; int numero =
+Integer.parseInt(texto);
+
+STRING PARA DOUBLE String texto = “19.90”; double valor =
+Double.parseDouble(texto);
+
+STRING PARA FLOAT String texto = “5.5”; float valor =
+Float.parseFloat(texto);
+
+STRING PARA LONG String texto = “123456789”; long numero =
+Long.parseLong(texto);
+
+STRING PARA BOOLEAN String texto = “true”; boolean ativo =
+Boolean.parseBoolean(texto);
+
+STRING PARA BYTE String texto = “100”; byte numero =
+Byte.parseByte(texto);
+
+STRING PARA SHORT String texto = “300”; short numero =
+Short.parseShort(texto);
+
+3.  EXEMPLOS COM JTextField (SWING)
+
+PEGAR UM ID DIGITADO: int id = Integer.parseInt(txtId.getText());
+
+PEGAR UMA QUANTIDADE: int quantidade =
+Integer.parseInt(txtQuantidade.getText());
+
+PEGAR UM PREÇO: double preco = Double.parseDouble(txtPreco.getText());
+
+PEGAR UMA IDADE: int idade = Integer.parseInt(txtIdade.getText());
+
+PEGAR UM NOME: String nome = txtNome.getText();
+
+IMPORTANTE: String não precisa de parse. getText() já retorna String.
+
+4.  CONVERTER NÚMEROS PARA STRING
+
+INT PARA STRING: int id = 10; String texto = String.valueOf(id);
+
+DOUBLE PARA STRING: double preco = 19.90; String texto =
+String.valueOf(preco);
+
+Também é possível: String texto = Integer.toString(id); String texto =
+Double.toString(preco);
+
+Em telas Swing: txtId.setText(String.valueOf(objeto.getId()));
+txtPreco.setText(String.valueOf(objeto.getPreco()));
+
+5.  EXEMPLO COMPLETO — CADASTRAR PRODUTO
+
+Produto produto = new Produto();
+
+produto.setNome(txtNome.getText());
+produto.setPreco(Double.parseDouble(txtPreco.getText()));
+produto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+
+Categoria categoria = (Categoria) cbCategoria.getSelectedItem();
+produto.setCategoria(categoria);
+
+ProdutoDAO dao = new ProdutoDAO(); dao.inserir(produto);
+
+JOptionPane.showMessageDialog(null, “Produto cadastrado!”);
+
+O QUE ESTÁ ACONTECENDO? - getText() pega o conteúdo digitado como
+String. - parseDouble() converte o preço para double. - parseInt()
+converte a quantidade para int. - getSelectedItem() recupera o objeto
+selecionado no JComboBox. - set…() coloca os valores no objeto Produto.
+
+6.  EXEMPLO COMPLETO — CONSULTAR POR ID
+
+int id = Integer.parseInt(txtConsultaId.getText());
+
+ProdutoDAO dao = new ProdutoDAO(); Produto produto = dao.getProduto(id);
+
+if (produto == null) { JOptionPane.showMessageDialog(null, “Produto não
+encontrado!”); } else { txtId.setText(String.valueOf(produto.getId()));
+txtNome.setText(produto.getNome());
+txtPreco.setText(String.valueOf(produto.getPreco()));
+txtQuantidade.setText(String.valueOf(produto.getQuantidade())); }
+
+OBSERVE: - Na entrada: String -> int, usando parseInt(). - Na saída:
+int/double -> String, usando String.valueOf().
+
+7.  TRATAMENTO DE ERRO COM try/catch
+
+Se o usuário digitar letras em um campo que deveria receber número, o
+parse pode gerar NumberFormatException.
+
+Exemplo: try { int quantidade =
+Integer.parseInt(txtQuantidade.getText()); double preco =
+Double.parseDouble(txtPreco.getText());
+
+    JOptionPane.showMessageDialog(null, "Valores válidos!");
+
+} catch (NumberFormatException ex) { JOptionPane.showMessageDialog(null,
+“Digite números válidos!”); }
+
+8.  CUIDADO COM VÍRGULA E PONTO NO DOUBLE
+
+Double.parseDouble() normalmente espera ponto como separador decimal.
+
+Exemplo válido: double preco = Double.parseDouble(“19.90”);
+
+Pode dar erro: double preco = Double.parseDouble(“19,90”);
+
+Para aceitar vírgula digitada pelo usuário: String textoPreco =
+txtPreco.getText().replace(“,”, “.”); double preco =
+Double.parseDouble(textoPreco);
+
+9.  parse() x valueOf()
+
+Integer.parseInt(“10”) retorna um int. Integer.valueOf(“10”) retorna um
+objeto Integer.
+
+Double.parseDouble(“10.5”) retorna um double. Double.valueOf(“10.5”)
+retorna um objeto Double.
+
+No projeto das aulas, os mais importantes são: Integer.parseInt()
+Double.parseDouble() String.valueOf()
+
+10. RESUMO PARA MEMORIZAR
+
+Integer.parseInt(texto) -> int Double.parseDouble(texto) -> double
+Float.parseFloat(texto) -> float Long.parseLong(texto) -> long
+Boolean.parseBoolean(texto) -> boolean
+
+String.valueOf(numero) -> String
+
+txtNome.getText() -> String txtQuantidade.getText() -> String
+txtPreco.getText() -> String
+
+REGRA PRÁTICA: - Vai pegar número de um JTextField? Use parse. - Vai
+colocar número em um JTextField? Use String.valueOf(). - Vai pegar texto
+de um JTextField? Use getText() diretamente. - Vai pegar um objeto do
+JComboBox? Use getSelectedItem() e faça o cast para o tipo correto.
+
+FIM DO GUIA
