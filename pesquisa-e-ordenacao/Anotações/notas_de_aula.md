@@ -34,6 +34,10 @@ fbPai == - && fbFilho == +
 fbPai == + && fbFilho == -  
 O AVL é ativado no inserir
 
+### EXERCÍCIO HASHMAP
+
+<img width="1120" height="886" alt="image" src="https://github.com/user-attachments/assets/73d5d108-6ee3-45eb-a29e-008c0a67697e" />
+
 # Aula 26 - 26/10/2026
 
 ### Técnicas de Armazenamento - Pesquisa digital
@@ -54,7 +58,6 @@ As árvores Trie e PATRICIA são estruturas de dados baseadas em pesquisa digita
   - Muito usada para pesquisar strings/chaves de forma eficiente.
  
 <img width="782" height="219" alt="image" src="https://github.com/user-attachments/assets/dd39f5af-489e-4209-ba2c-a6f9aa3626c1" />
-
 
 # Aula 25 - 22/10/2026
 - Fazer uma pesquisa sobre: LLM + Transformers + Embedding + RAG
