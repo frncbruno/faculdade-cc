@@ -1,0 +1,30 @@
+RELATORIO DE DESEMPENHO
+
+Arquivo: produtos_1000.txt
+Bubble Sort: 32.7286 ms
+Quick Sort: 0.7948 ms
+Busca Linear: 3.857E-4 ms
+Busca Binaria: 7.441E-4 ms
+Criacao HashMap: 0.132 ms
+Busca HashMap: 6.56E-5 ms
+
+Arquivo: produtos_10000.txt
+Bubble Sort: 2024.8165 ms
+Quick Sort: 1.4467 ms
+Busca Linear: 2.59E-5 ms
+Busca Binaria: 1.009E-4 ms
+Criacao HashMap: 2.4603 ms
+Busca HashMap: 4.1200000000000005E-5 ms
+
+Arquivo: produtos_50000.txt
+Bubble Sort: 66715.024 ms
+Quick Sort: 10.8403 ms
+Busca Linear: 3.03E-5 ms
+Busca Binaria: 1.761E-4 ms
+Criacao HashMap: 8.285 ms
+Busca HashMap: 2.9199999999999998E-5 ms
+
+RESUMO:
+HashMap costuma ser mais rapido em buscas repetidas.
+Busca binaria exige que a lista esteja ordenada por ID.
+HashMap compensa quando existem muitas consultas.
