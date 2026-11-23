@@ -95,6 +95,16 @@ A inserção em uma Árvore B segue regras rígidas para manter o balanceamento:
 
 ---
 
+# Exercício
+
+<img width="1011" height="366" alt="image" src="https://github.com/user-attachments/assets/a61066f0-8366-4bf8-b972-842ea6de3e3f" />
+
+<img width="614" height="149" alt="image" src="https://github.com/user-attachments/assets/c2238e39-2554-4ca4-9e03-19ae97ba84d3" />
+
+[Site](https://www.cs.usfca.edu/~galles/visualization/BTree.html)
+
+
+
 # Aula 28 - 12/11/2026
 
 1. Entrar no link original: www.ufn.edu.br.HASHCODE()
