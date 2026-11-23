@@ -1,85 +1,99 @@
 # Aula final - 23/11/2026
 
-### Resumo: Árvores B (*B-Trees*)
+# 🌳 Árvores B (B-Tree)
 
-Uma **Árvore B** é uma estrutura de dados em árvore **sempre balanceada**, autoajustável e *multiway* (cada nó pode ter mais de dois filhos). Foi projetada principalmente para **sistemas de arquivos** e **bancos de dados** que armazenam grandes volumes de dados em **memória secundária** (discos rígidos e SSDs), onde o custo de leitura/escrita de blocos (I/O) é o principal gargalo.
-
----
-
-## Por que usar Árvores B?
-* Buscar formas de dados que estão em disco que tenho que trazer porções para a memória RAM
-* **Menor altura da árvore:** Como cada nó comporta múltiplas chaves e ponteiros, a árvore cresce mais em largura do que em profundidade, reduzindo o número de acessos a disco durante buscas.
-* **Alinhamento com blocos de disco:** O tamanho de um nó costuma ser ajustado para caber exatamente em uma página ou bloco do disco (ex.: 4 KB ou 16 KB).
-* **Balanceamento garantido:** Todas as folhas estão exatamente no **mesmo nível**, assegurando tempo de busca previsível.
+Estrutura de dados em árvore balanceada, otimizada para sistemas que leem e escrevem grandes blocos de dados.
 
 ---
 
-## Propriedades Fundamentais
-
-Considerando uma Árvore B de **ordem $m$**:
-
-1. **Chaves ordenadas:** As chaves dentro de cada nó ficam em ordem crescente. Um nó com $k$ chaves possui $k + 1$ ponteiros para filhos.
-2. **Separação de intervalos:** Se um nó interno tem chaves $c_1 < c_2 < \dots < c_k$:
-   * O 1º filho contém chaves menores que $c_1$.
-   * O $(i+1)$-ésimo filho contém chaves entre $c_i$ e $c_{i+1}$.
-   * O último filho contém chaves maiores que $c_k$.
-3. **Limites de filhos e chaves:**
-   * **Máximo de filhos:** $m$ (e no máximo $m - 1$ chaves).
-   * **Mínimo de filhos (nós internos não raiz):** $\lceil m/2 \rceil$ (e no mínimo $\lceil m/2 \rceil - 1$ chaves).
-   * **Raiz:** Pode ter de $1$ a $m - 1$ chaves (quando não vazia) e no mínimo $2$ filhos se não for folha.
-4. **Mesma profundidade:** Todas as folhas ficam no mesmo nível.
+## 🎯 Aplicações e Características
+* **Pesquisa em memória secundária:** Ideal para discos rígidos e bancos de dados, onde o acesso ao disco é lento.
+* **Árvore equilibrada e não profunda:** Todas as folhas estão no mesmo nível, garantindo tempo de busca previsível.
+* **Agilidade no acesso:** Minimiza a quantidade de operações de I/O (entrada/saída) para localizar dados ou chaves.
+* **Coleção de páginas:** Cada nó da árvore representa uma página de disco contendo múltiplas chaves e ponteiros.
 
 ---
 
-## Operações Principais
+## 📐 Conceitos Fundamentais: Ordem ($m$)
 
-### 1. Busca (*Search*)
-* Percorre as chaves do nó atual em ordem para encontrar a chave desejada ou identificar o ponteiro do filho correspondente ao intervalo.
-* Repete o processo descendo na árvore até encontrar a chave ou atingir um nó folha sem sucesso.
+A **ordem ($m$)** de uma Árvore B define a capacidade de ramificação de seus nós, estando diretamente ligada ao número máximo de descendentes (ponteiros para nós filhos) que uma página pode ter.
 
-### 2. Inserção (*Insert*)
-* A inserção ocorre sempre em um **nó folha**.
-* Se a folha tiver espaço (menos de $m - 1$ chaves), insere a chave mantendo a ordenação.
-* Se o nó estiver **cheio**, ocorre uma **divisão (*split*)**:
-  1. O nó é dividido ao meio.
-  2. A **chave mediana** sobe para o nó pai.
-  3. Se o pai também estourar, a divisão propaga para cima (podendo gerar uma nova raiz).
+### Regras de Capacidade (para uma árvore de ordem $m$)
+* **Máximo de filhos por nó:** $m$
+* **Máximo de chaves por página:** $m - 1$
+* **Mínimo de chaves por página (exceto a raiz):** $\lfloor m / 2 \rfloor - 1$ *(ou $\lceil m / 2 \rceil - 1$, dependendo da definição adotada; nos slides utiliza-se $(m/2) - 1$)*
 
-### 3. Remoção (*Delete*)
-* **Em folha:** Remove a chave; se o nó ficar abaixo do mínimo permitido, tenta pegar uma chave emprestada de um irmão adjacente ou realiza uma **fusão (*merge*)** com um irmão descendo uma chave separadora do pai.
-* **Em nó interno:** Substitui a chave pelo seu **antecessor imediato** (maior chave da subárvore esquerda) ou **sucessor imediato** (menor chave da subárvore direita), remove esse substituto da folha correspondente e rebalanceia se necessário.
+> **Exemplo (Ordem $m = 5$):**
+> * **Máximo de chaves:** $5 - 1 = 4$ chaves por página.
+> * **Mínimo de chaves:** $(5 / 2) - 1 = 1$ chave por página (exceto raiz).
 
 ---
 
-## Complexidade
+## ➕ Operação de Inserção
 
-Seja $n$ o número total de chaves e $m$ a ordem da árvore:
+A inserção em uma Árvore B segue regras rígidas para manter o balanceamento:
 
-| Operação | Tempo (Pior Caso) | Acessos a Disco (I/O) |
-| :--- | :--- | :--- |
-| **Busca** | $O(\log n)$ | $O(\log_m n)$ |
-| **Inserção** | $O(\log n)$ | $O(\log_m n)$ |
-| **Remoção** | $O(\log n)$ | $O(\log_m n)$ |
-| **Espaço** | $O(n)$ | $O(n)$ |
-
----
-
-## Árvore B vs. Árvore B+
-
-| Característica | Árvore B | Árvore B+ |
-| :--- | :--- | :--- |
-| **Armazenamento dos registros** | Nos nós internos e nas folhas | Apenas nas folhas |
-| **Repetição de chaves** | Chaves não se repetem | Chaves dos nós internos repetem nas folhas |
-| **Busca por intervalo (*range scan*)** | Mais lenta (percorre vários níveis) | Muito rápida (folhas ligadas em lista) |
-| **Uso típico** | Alguns sistemas de arquivos | Maioria dos SGBDs relacionais (ex.: InnoDB) |
+1. **Busca pela folha:** A inserção **sempre** ocorre em um nó folha, mantendo as chaves ordenadas dentro da página.
+2. **Verificação de estouro (Overflow):** Se o número de chaves na página exceder o limite máximo ($m - 1$), ocorre uma **divisão (*split*)**.
+3. **Processo de Divisão (*Split*):**
+   * A página cheia é dividida em duas novas páginas com os elementos distribuídos.
+   * A **chave mediana (elemento do meio)** é promovida para o nó pai (ou torna-se uma nova raiz, caso a divisão ocorra na raiz atual).
+   * Se o nó pai também exceder o limite máximo ao receber a chave promovida, o processo de divisão se propaga para cima até a raiz.
 
 ---
 
-## Exemplo Conceitual Rápido
+## 📝 Exemplo Passo a Passo (Ordem 5)
 
-Em uma Árvore B de **ordem 3** (máximo de **2 chaves** e **3 filhos** por nó):
-1. Inserir `10` e `20`: `[10, 20]`
-2. Inserir `30` (estoura o limite de 2 chaves): a mediana `20` sobe para virar a nova raiz, deixando `[10]` à esquerda e `[30]` à direita.
+**Sequência de inserção:** `1, 12, 8, 2, 25, 6, 14, 28, 17, 7, 52, 16, 48, 68, 3, 26, 29, 53, 55, 45`
+
+1. **Inserindo `1, 12, 8, 2`:**
+   * Todos cabem na raiz (limite de 4 chaves) e são ordenados: `[1, 2, 8, 12]`.
+
+2. **Inserindo `25` (1º Split):**
+   * O nó estoura: `[1, 2, 8, 12, 25]`.
+   * O elemento do meio (`8`) sobe e forma a nova raiz.
+   * **Estrutura:**
+     * Raiz: `[8]`
+     * Filhos: `[1, 2]` e `[12, 25]`
+
+3. **Inserindo `6, 14, 28`:**
+   * Inseridos diretamente nas folhas correspondentes sem causar estouro.
+   * **Filhos:** `[1, 2, 6]` e `[12, 14, 25, 28]`
+
+4. **Inserindo `17` (2º Split):**
+   * A folha direita estoura: `[12, 14, 17, 25, 28]`.
+   * A mediana (`17`) sobe para a raiz.
+   * **Estrutura:**
+     * Raiz: `[8, 17]`
+     * Filhos: `[1, 2, 6]`, `[12, 14]`, `[25, 28]`
+
+5. **Inserindo `7, 52, 16, 48`:**
+   * Inseridos sem provocar divisões:
+     * `[1, 2, 6, 7]` | `[12, 14, 16]` | `[25, 28, 48, 52]`
+
+6. **Inserindo `68` (3º Split):**
+   * A última folha estoura: `[25, 28, 48, 52, 68]`.
+   * A mediana (`48`) sobe para a raiz.
+   * **Raiz:** `[8, 17, 48]`
+
+7. **Inserindo `3` (4º Split):**
+   * A primeira folha estoura: `[1, 2, 3, 6, 7]`.
+   * A mediana (`3`) sobe para a raiz.
+   * **Raiz:** `[3, 8, 17, 48]` (atingiu o limite máximo de 4 chaves).
+
+8. **Inserindo `26, 29, 53, 55`:**
+   * Inseridos nas folhas sem estourar nenhuma página.
+
+9. **Inserindo `45` (Duplo Split / Propagação):**
+   * A folha `[25, 26, 28, 29]` recebe o `45` e estoura: `[25, 26, 28, 29, 45]`.
+   * **1ª Divisão:** A mediana `28` sobe para a raiz.
+   * **2ª Divisão (na Raiz):** A raiz estoura com `[3, 8, 17, 28, 48]`. A mediana `17` sobe e cria uma **nova raiz**, aumentando a altura da árvore.
+   * **Estrutura Final:**
+     * **Raiz:** `[17]`
+     * **Nível Intermediário:** `[3, 8]` e `[28, 48]`
+     * **Folhas:** `[1, 2]`, `[6, 7]`, `[12, 14, 16]`, `[25, 26]`, `[29, 45]`, `[52, 53, 55, 68]`
+
+---
 
 # Aula 28 - 12/11/2026
 
