@@ -1,3 +1,86 @@
+# Aula final - 23/11/2026
+
+### Resumo: Árvores B (*B-Trees*)
+
+Uma **Árvore B** é uma estrutura de dados em árvore **sempre balanceada**, autoajustável e *multiway* (cada nó pode ter mais de dois filhos). Foi projetada principalmente para **sistemas de arquivos** e **bancos de dados** que armazenam grandes volumes de dados em **memória secundária** (discos rígidos e SSDs), onde o custo de leitura/escrita de blocos (I/O) é o principal gargalo.
+
+---
+
+## Por que usar Árvores B?
+* Buscar formas de dados que estão em disco que tenho que trazer porções para a memória RAM
+* **Menor altura da árvore:** Como cada nó comporta múltiplas chaves e ponteiros, a árvore cresce mais em largura do que em profundidade, reduzindo o número de acessos a disco durante buscas.
+* **Alinhamento com blocos de disco:** O tamanho de um nó costuma ser ajustado para caber exatamente em uma página ou bloco do disco (ex.: 4 KB ou 16 KB).
+* **Balanceamento garantido:** Todas as folhas estão exatamente no **mesmo nível**, assegurando tempo de busca previsível.
+
+---
+
+## Propriedades Fundamentais
+
+Considerando uma Árvore B de **ordem $m$**:
+
+1. **Chaves ordenadas:** As chaves dentro de cada nó ficam em ordem crescente. Um nó com $k$ chaves possui $k + 1$ ponteiros para filhos.
+2. **Separação de intervalos:** Se um nó interno tem chaves $c_1 < c_2 < \dots < c_k$:
+   * O 1º filho contém chaves menores que $c_1$.
+   * O $(i+1)$-ésimo filho contém chaves entre $c_i$ e $c_{i+1}$.
+   * O último filho contém chaves maiores que $c_k$.
+3. **Limites de filhos e chaves:**
+   * **Máximo de filhos:** $m$ (e no máximo $m - 1$ chaves).
+   * **Mínimo de filhos (nós internos não raiz):** $\lceil m/2 \rceil$ (e no mínimo $\lceil m/2 \rceil - 1$ chaves).
+   * **Raiz:** Pode ter de $1$ a $m - 1$ chaves (quando não vazia) e no mínimo $2$ filhos se não for folha.
+4. **Mesma profundidade:** Todas as folhas ficam no mesmo nível.
+
+---
+
+## Operações Principais
+
+### 1. Busca (*Search*)
+* Percorre as chaves do nó atual em ordem para encontrar a chave desejada ou identificar o ponteiro do filho correspondente ao intervalo.
+* Repete o processo descendo na árvore até encontrar a chave ou atingir um nó folha sem sucesso.
+
+### 2. Inserção (*Insert*)
+* A inserção ocorre sempre em um **nó folha**.
+* Se a folha tiver espaço (menos de $m - 1$ chaves), insere a chave mantendo a ordenação.
+* Se o nó estiver **cheio**, ocorre uma **divisão (*split*)**:
+  1. O nó é dividido ao meio.
+  2. A **chave mediana** sobe para o nó pai.
+  3. Se o pai também estourar, a divisão propaga para cima (podendo gerar uma nova raiz).
+
+### 3. Remoção (*Delete*)
+* **Em folha:** Remove a chave; se o nó ficar abaixo do mínimo permitido, tenta pegar uma chave emprestada de um irmão adjacente ou realiza uma **fusão (*merge*)** com um irmão descendo uma chave separadora do pai.
+* **Em nó interno:** Substitui a chave pelo seu **antecessor imediato** (maior chave da subárvore esquerda) ou **sucessor imediato** (menor chave da subárvore direita), remove esse substituto da folha correspondente e rebalanceia se necessário.
+
+---
+
+## Complexidade
+
+Seja $n$ o número total de chaves e $m$ a ordem da árvore:
+
+| Operação | Tempo (Pior Caso) | Acessos a Disco (I/O) |
+| :--- | :--- | :--- |
+| **Busca** | $O(\log n)$ | $O(\log_m n)$ |
+| **Inserção** | $O(\log n)$ | $O(\log_m n)$ |
+| **Remoção** | $O(\log n)$ | $O(\log_m n)$ |
+| **Espaço** | $O(n)$ | $O(n)$ |
+
+---
+
+## Árvore B vs. Árvore B+
+
+| Característica | Árvore B | Árvore B+ |
+| :--- | :--- | :--- |
+| **Armazenamento dos registros** | Nos nós internos e nas folhas | Apenas nas folhas |
+| **Repetição de chaves** | Chaves não se repetem | Chaves dos nós internos repetem nas folhas |
+| **Busca por intervalo (*range scan*)** | Mais lenta (percorre vários níveis) | Muito rápida (folhas ligadas em lista) |
+| **Uso típico** | Alguns sistemas de arquivos | Maioria dos SGBDs relacionais (ex.: InnoDB) |
+
+---
+
+## Exemplo Conceitual Rápido
+
+Em uma Árvore B de **ordem 3** (máximo de **2 chaves** e **3 filhos** por nó):
+1. Inserir `10` e `20`: `[10, 20]`
+2. Inserir `30` (estoura o limite de 2 chaves): a mediana `20` sobe para virar a nova raiz, deixando `[10]` à esquerda e `[30]` à direita.
+
 # Aula 28 - 12/11/2026
 
 1. Entrar no link original: www.ufn.edu.br.HASHCODE()
