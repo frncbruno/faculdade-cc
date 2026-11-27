@@ -320,3 +320,7 @@ AND (
 <img width="795" height="228" alt="image" src="https://github.com/user-attachments/assets/27a17cfa-6916-418a-8446-ac43ab368ac9" />
 <img width="1425" height="221" alt="image" src="https://github.com/user-attachments/assets/bf4e66ee-36b1-47ce-b501-e1b391cd6b5a" />
 <img width="678" height="248" alt="image" src="https://github.com/user-attachments/assets/ab38af18-8e7b-41e3-b44f-6ff6d8fa9282" />
+
+
+### LINK DO CHATGPT
+https://chatgpt.com/share/6b098712-f4e4-83e9-b722-0aface4c7769
