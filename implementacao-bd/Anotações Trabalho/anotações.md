@@ -1,4 +1,4 @@
-<img width="1425" height="221" alt="image" src="https://github.com/user-attachments/assets/93ca0c08-caf2-4bfa-8243-6c15bf6071cb" />### CÓDIGOS SQL - TRIGGER DE AUDITORIA
+### CÓDIGOS SQL - TRIGGER DE AUDITORIA
 
 FAZ A LIST NO WORD DESGRACADO PARA COLOCAR OS CODIGOS
 
@@ -316,6 +316,7 @@ AND (
 ### PRINT SQL
 <img width="1436" height="233" alt="image" src="https://github.com/user-attachments/assets/8188b06e-14f5-4bc7-ba34-6c3583f1441f" />
 <img width="1458" height="215" alt="image" src="https://github.com/user-attachments/assets/25d32632-987f-4116-b7e8-4246106ca242" />
+<img width="1425" height="221" alt="image" src="https://github.com/user-attachments/assets/93ca0c08-caf2-4bfa-8243-6c15bf6071cb" />
 <img width="795" height="228" alt="image" src="https://github.com/user-attachments/assets/27a17cfa-6916-418a-8446-ac43ab368ac9" />
 <img width="1425" height="221" alt="image" src="https://github.com/user-attachments/assets/bf4e66ee-36b1-47ce-b501-e1b391cd6b5a" />
 <img width="678" height="248" alt="image" src="https://github.com/user-attachments/assets/ab38af18-8e7b-41e3-b44f-6ff6d8fa9282" />
