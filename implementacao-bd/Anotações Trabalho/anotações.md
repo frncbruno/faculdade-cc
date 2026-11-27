@@ -132,6 +132,6 @@ DELIMITER ;
 
 ### PRINT DO SQL
 
-<img width="1274" height="102" alt="image" src="https://github.com/user-attachments/assets/78eaade2-46f8-41f9-aef9-1fa2672544fb" />]
+<img width="1274" height="102" alt="image" src="https://github.com/user-attachments/assets/78eaade2-46f8-41f9-aef9-1fa2672544fb" />
 
 --- 
