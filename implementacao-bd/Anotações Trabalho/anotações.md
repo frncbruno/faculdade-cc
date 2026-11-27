@@ -135,3 +135,18 @@ DELIMITER ;
 <img width="1274" height="102" alt="image" src="https://github.com/user-attachments/assets/78eaade2-46f8-41f9-aef9-1fa2672544fb" />
 
 --- 
+
+### FEATURE DE BACKUP
+
+```sql
+
+```
+
+### PRINT DO SQL
+- TABELA LOG BACKUP
+<img width="491" height="101" alt="image" src="https://github.com/user-attachments/assets/68648cc1-159e-4540-a3dc-a73716488ed9" />
+
+- TABELA BACKUP_ITEM_ACERVO
+<img width="1467" height="157" alt="image" src="https://github.com/user-attachments/assets/6847c963-cfee-437a-bfc8-031b428c891a" />
+
+
