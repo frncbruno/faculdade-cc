@@ -1,4 +1,4 @@
-### CÓDIGOS SQL - TRIGGER DE AUDITORIA
+<img width="1425" height="221" alt="image" src="https://github.com/user-attachments/assets/93ca0c08-caf2-4bfa-8243-6c15bf6071cb" />### CÓDIGOS SQL - TRIGGER DE AUDITORIA
 
 FAZ A LIST NO WORD DESGRACADO PARA COLOCAR OS CODIGOS
 
@@ -256,3 +256,66 @@ CALL sp_realizar_backup();
 <img width="1467" height="157" alt="image" src="https://github.com/user-attachments/assets/6847c963-cfee-437a-bfc8-031b428c891a" />
 
 
+---
+
+### VIEW - CATÁLOGO PÚBLICO
+
+```sql
+CREATE VIEW vw_catalogo_publico AS
+
+SELECT
+    ia.id_item_acervo,
+    ia.titulo,
+    ia.subtitulo,
+    ia.tipo,
+    ia.idioma,
+    ia.descricao,
+    e.nome AS editora,
+
+    l.codigo_livro,
+    l.isbn,
+    l.edicao AS edicao_livro,
+    l.ano_publicacao,
+
+    r.codigo_revista,
+    r.issn,
+    r.edicao AS edicao_revista,
+    r.volume,
+    r.periodicidade,
+    r.ano AS ano_revista,
+    r.mes,
+
+    j.codigo_jornal,
+    j.edicao AS edicao_jornal,
+    j.data AS data_publicacao
+
+FROM item_acervo ia
+
+LEFT JOIN editora e
+    ON ia.id_editora = e.id_editora
+
+LEFT JOIN livro l
+    ON ia.id_item_acervo = l.id_item_acervo
+
+LEFT JOIN revista r
+    ON ia.id_item_acervo = r.id_item_acervo
+
+LEFT JOIN jornal j
+    ON ia.id_item_acervo = j.id_item_acervo
+
+WHERE ia.status = 'Ativo'
+AND (
+    (ia.tipo = 'Livro' AND l.ativo = b'1')
+    OR
+    (ia.tipo = 'Revista' AND r.ativo = b'1')
+    OR
+    (ia.tipo = 'Jornal' AND j.ativo = b'1')
+);
+```
+
+### PRINT SQL
+<img width="1436" height="233" alt="image" src="https://github.com/user-attachments/assets/8188b06e-14f5-4bc7-ba34-6c3583f1441f" />
+<img width="1458" height="215" alt="image" src="https://github.com/user-attachments/assets/25d32632-987f-4116-b7e8-4246106ca242" />
+<img width="795" height="228" alt="image" src="https://github.com/user-attachments/assets/27a17cfa-6916-418a-8446-ac43ab368ac9" />
+<img width="1425" height="221" alt="image" src="https://github.com/user-attachments/assets/bf4e66ee-36b1-47ce-b501-e1b391cd6b5a" />
+<img width="678" height="248" alt="image" src="https://github.com/user-attachments/assets/ab38af18-8e7b-41e3-b44f-6ff6d8fa9282" />
