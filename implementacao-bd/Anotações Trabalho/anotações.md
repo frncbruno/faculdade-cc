@@ -1,6 +1,9 @@
 ### CÓDIGOS SQL - TRIGGER DE AUDITORIA
 
-FAZ A LIST NO WORD DESGRACADO
+FAZ A LIST NO WORD DESGRACADO PARA COLOCAR OS CODIGOS
+
+<img width="637" height="514" alt="image" src="https://github.com/user-attachments/assets/c4d5f009-4101-4cd3-86e2-00c5c2d80b17" />
+
 
 ```sql
 -- CRIAÇÃO DA TABELA DE LOG
